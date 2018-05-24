@@ -11,5 +11,7 @@ class ReadOrders extends Model
     protected $primaryKey = 'did';
     public $guarded = array('');
     public $timestamps = false;
+
    
+
 }

@@ -142,7 +142,9 @@
                     </tbody>
                 </table>
                 
-                <div class="dataTables_info" id="DataTables_Table_1_info">当前{{$num}}条,共{{$count}}条</div>
+
+                <div class="dataTables_info" id="DataTables_Table_1_info">共{{$count}}条</div>
+
 <style>
                     .pagination li{
                         float: left;

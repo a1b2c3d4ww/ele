@@ -156,6 +156,7 @@
                 </em>
             </span>
         </div>
+
         @if($enshrine)
         <a class="shopguide-favor"  " href="#">
 
@@ -175,6 +176,7 @@
             </span>
         </a>
         @endif
+
     </div>
 </div>
 <div class="ng-scope ng-isolate-scope">
@@ -334,9 +336,11 @@ sticky-fn="shopNavSticky">
                                        var ins = arrs.indexOf(gid);
                                        $('.itemname').eq(ins).val(data.gname)
                                        $('.count').eq(ins).val(arr[index]);
+
                                        $('.count').eq(ins).val(arr[index]);
                                        $('.itegid').eq(ins).val(gid);
                                        $('.price').eq(ins).val(arr[index]*data.price);
+
                                          
                                  })
                             
@@ -362,7 +366,9 @@ sticky-fn="shopNavSticky">
                             $('#btn-add').addClass('shop-cartpieces');
                             $('#jiesuan').removeClass('disabled');
                             $('#jiesuan').removeAttr('disabled');
+
                         
+
                             sum =0;       
                             // return gname;
                            
@@ -401,19 +407,25 @@ sticky-fn="shopNavSticky">
 
                             for(var i = 0; i < arr.length; i++) {
                                     sum += arr[i];
+
                             }   
+
                                $.get('/home/subcartajax/'+gid,{},function(data){
                                 if(!arrs.contains(gid)){
                                       arrs.unshift(gid);
                                    }
 
+
+
                                        var ins = arrs.indexOf(gid);
                                        $('.itemname').eq(ins).val(data.gname)
                                        $('.count').eq(ins).val(arr[index]);
                                       // console.log(arr[index]) ;
+
                                        $('.itegid').eq(ins).val(arrs);
                                        // 
                                        $('.price').eq(ins).val(arr[index]*data.price);
+
                               
 
                              })
@@ -460,9 +472,11 @@ sticky-fn="shopNavSticky">
 
             </script>
             <style>
+
                 .mine{border:0px;color:#666;font-size:13px;text-overflow:ellipsis;margin-left:0px;width:140px;height:28px;}
                 .your{font-size:11px;color:#666;border:1px solid #ddd;margin-left:10px;text-align:center;width:40px;height:22px;}
                 .her{border:0px;color:#666;color:#F17530; margin-left:15px; margin-right:10px;width:30px;height:28px;text-align:right;}
+
             </style>
             <script>
                  $('.carts').each(function(){
@@ -479,11 +493,13 @@ sticky-fn="shopNavSticky">
         })
 
                 var dia = `<div class="shop-cartbasket-tablerow ng-scope dia" style="line-height:45px;">
+
                                 <input class="mine itemname" name="gname[]"  value ="">
                                 <input type="hidden" class="itegid" name="gid[]"  value ="">
                                 <input class="your count" name="num[]" value="">
                                 
                                  <input class="her price" name ="price[]" value="">元
+
                             </div>`;
 
                 function only(){            
@@ -514,25 +530,7 @@ sticky-fn="shopNavSticky">
                     $('#aaa').attr('style','display:none');
                 }
 
-                // var i = 0;
-                // function aaa(){
-                //     i++;
-                //     var dd =  $('#btn-add').html();
-                //     if(dd==0 ||dd==''){
-                //         var p = 'top:-208px;height:auto';
-                //     }else{
-                //         p = 'top:-44px;height:auto;';
-                //     }
-                //         if(i%2==1){
-                              
-                //             $('#shopbasket').attr('style',p);
-                         
-                //         }else{
-                //             $('#shopbasket').attr('style','top:0px;height:auto;');
-                //             $('#aaa').attr('style','display:none');
-                //         }
-                //         $('.icon-cart-add').attr('title','添加购物车');  
-                // }
+
  
             </script>
 
@@ -540,7 +538,9 @@ sticky-fn="shopNavSticky">
             <div class="ng-isolate-scope">
 
                     <div class="shop-cart">
+
                     <form action="/home/orderest/index/{{$mid}}" method="get">
+
                     <div class="shop-cartbasket" id="shopbasket" style="top: -44px; height: auto;">
 
                         <div shop-groupswitcher="" id="shopcart" class="ng-isolate-scope">
@@ -588,6 +588,7 @@ sticky-fn="shopNavSticky">
                                 配送费¥6
                             </div>
                         </div>
+
                         <button class="shop-cartfooter-checkout ng-binding disabled" disabled="disabled" id="jiesuan" onclick="jiesuan()">
                             结算
                         </button>
@@ -788,6 +789,7 @@ sticky-fn="shopNavSticky">
 
     </script>
 
+
     <script type="text/javascript">
         $('.enshrine').click(function(){
             $.get('/home/enshrineajax/'+{{$mid}},{},function(data){
@@ -805,4 +807,5 @@ sticky-fn="shopNavSticky">
             })
         })
     </script>
+
 @endsection

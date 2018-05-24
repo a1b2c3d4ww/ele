@@ -2,10 +2,14 @@
 
 @section('title','地址管理')
 
-@section('list')
 
+@section('content')
+<div style="width:100%;height:10px"></div>
+    <div class="ng-scope">
+    <div class="profile-container container">
+        @include('layout.list')
 <div class="profile-panel" role="main">
-    <!-- ngIf: pageTitleVisible -->
+
     <h3 ng-if="pageTitleVisible" class="profile-paneltitle ng-scope">
         <span ng-bind="pageTitle" class="ng-binding">
             地址管理

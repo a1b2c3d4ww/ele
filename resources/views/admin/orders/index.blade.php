@@ -50,45 +50,43 @@
                     <thead>
                         <tr role="row">
                             <th 
-                            style="width: 142px;">
+
+                            style="">
+
                                 订单号
                             </th>
                          
                             <th 
-                            style="width: 174px;">
+
+                            style="">
                                 联系人
                             </th>
                             <th 
-                            style="width: 123px;">
+                            style="">
                                 地址
                             </th>
                             <th 
-                            style="width: 91px;">
+                            style="">
                                电话
                             </th>
                          
-                             <th 
-                            style="width: 91px;">
+                             <th>
                                 购买时间
                             </th>
-                             <th 
-                            style="width: 91px;">
+                             <th>
                                 总金额
                             </th>
-                             <th 
-                            style="width: 91px;">
+                             <th>
                                 状态
                             </th>
-                             <th 
-                            style="width: 91px;">
+                             <th>
                                  留言
                             </th>
-                             <th 
-                            style="width: 91px;">
+                             <th>
                                 菜品总数
                             </th>
-                             <th 
-                            style="width: 91px;">
+                             <th>
+
                                 操作
                             </th>
                         </tr>
@@ -165,7 +163,9 @@
                     </tbody>
                 </table>
                 <div class="dataTables_info" id="DataTables_Table_1_info">
-                    当前{{$num}}条,共{{$count}}条
+
+                   共{{$count}}条
+
                 </div>
                 <style>
                     .pagination li{

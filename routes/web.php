@@ -29,6 +29,12 @@ Route::get('/home/enshrineajax/{id}','home\AjaxController@enshrineajax');	//收�
 //前台
 
 Route::group([],function(){
+
+
+
+
+	Route::get('/home/orderinfo','home\MyorderController@orderinfo');//订单信息
+	Route::get('/home/orderpay','home\MyorderController@orderpay');//订单支付
 	Route::get('/home/merchant/index/{id}','home\MerchantController@index');//商家详情
 	Route::get('/home/orderest/index/{id}','home\OrderestController@index');//提交订单
 	Route::post('/home/orderest/pay','home\OrderestController@pay');//订单支付

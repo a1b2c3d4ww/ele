@@ -30,6 +30,7 @@
                     <div class="order-detail clearfix">
                         <div class="pull-left">
                             <p class="text-muted">
+
                                 {{$mname}}外卖订单
                             </p>
                             <p class="">
@@ -38,6 +39,7 @@
                                 </span>
                              
                             </p>
+
                         </div>
                         <p class="pull-right">
                             <span>
@@ -49,7 +51,9 @@
                                         ¥
                                     </span>
                                     <span>
+
                                        {{$sum}}
+
                                     </span>
                                 </strong>
                             </span>
@@ -65,6 +69,7 @@
                             <span>
                                 剩余支付时间
                             </span>
+
                             <span id="minute" style="color: red">
                                  
                             </span>分
@@ -72,6 +77,7 @@
                                 
                             </span> 秒
                                 
+=
                             <span>
                                 ，逾期订单将自动取消
                             </span>
@@ -106,7 +112,9 @@
                                     第三方支付
                                 </span>
                                 <span class="text-highlight text-money">
+
                                     ￥ {{$sum}}
+
                                 </span>
                             </p>
 
@@ -194,7 +202,9 @@
                             </div>
                         </section>
                         <button type="button" class="btn btn-success btn-lg">
+
                             <a href="/home/orderest/finish" style="text-decoration:none;color:white">确认支付</a>
+
                         </button>
                     </footer>
                 </section>
@@ -204,6 +214,7 @@
                 </section>
        
     </body>
+
 
     <script type="text/javascript">
           var minute = "4";
@@ -224,5 +235,6 @@
          $("#second").text(second);
      }, 1000);
  </script>
+
 
 </html>

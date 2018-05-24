@@ -49,7 +49,9 @@ class StatusController extends Controller
         }
             return redirect('admin/green/index');
 
-}
+
+  }
+
     
     public function adverup($id,$status=0)
 

@@ -2,8 +2,13 @@
 
 @section('title','个人中心')
 
-@section('list')
-        
+
+@section('content')
+    <div style="width:100%;height:10px"></div>
+    <div class="ng-scope">
+    <div class="profile-container container">
+        @include('layout.list')
+
         <div class="profile-panel" role="main">
             <!-- ngIf: pageTitleVisible -->
             <div class="profile-panelcontent" ng-transclude="">
@@ -66,7 +71,9 @@
     <tbody>
         <tr>
         </tr>
+
     
+
         @foreach($order as $k=>$v)
         <!-- ngRepeat: item in orderList -->
 <tr class="timeline" order-timeline="" ng-repeat="item in orderList">
@@ -157,7 +164,9 @@
                         <a class="tabnavigation-navitem active">
                             美食足迹
                         </a>
+
                         <a class="tabnavigation-navitem" href="/home/enshrine">
+
                             我的收藏
                         </a>
                         <div class="tabnavigation-rightitem ng-scope ng-binding simplepagination"
@@ -169,6 +178,7 @@
                             </span>
                         </div>
                     </div>
+
                     @if(Session::get('mid'))
                     @foreach(Session::get('mid') as $k=>$v)
                     <div class="footprint-content clearfix">
@@ -186,12 +196,14 @@
                             <div class="rstblock-content">
                                 <div class="rstblock-title ng-binding" ng-bind="restaurant.name">
                                     {{getmid($v)->mname}}
+
                                 </div>
                                 <div class="starrating icon-star">
                                     <span class="icon-star" style="width: 98%;">
                                     </span>
                                 </div>
                                 <div class="rstblock-cost ng-binding">
+
                                     配送费¥6
                                 </div>
 
@@ -210,14 +222,17 @@
                                     </i>
                                     @endif
 
+
                                 </div>
 
                             </div>
                         </a>
 
                     </div>
+
                     @endforeach
                     @endif
+
                 </div>
             </div>
         </div>

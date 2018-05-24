@@ -1,58 +1,72 @@
+
 @extends('layout.home')
 
 @section('title','饿了么-网上订餐')
 
 @section('content')
 
- <div ng-view="" role="main" class="ng-scope">
-    <div class="container clearfix ng-scope">
-        <!-- ngIf: isBeijing -->
-      
-        <!-- end ngIf: isBeijing -->
-       
-        <div class="place-search" role="search" search-input="">
-            <a class="place-search-btn icon-search" ubt-click="403" 
-            title="搜索商家或美食" ubt-data-keyword="">
-            </a>
-            <label for="globalsearch">
-                搜索商家或美食
-            </label>
-            <input id="globalsearch" class="place-search-input ng-pristine ng-valid"
-            ng-model="searchText" autocomplete="" placeholder="搜索商家,美食...">
-            <div class="searchbox">
-                <div class="searchbox-list searchbox-rstlist ng-hide">
-                    <ul>
-                        <!-- ngRepeat: restaurant in searchRestaurants | orderBy: [ '-is_opening',
-                        'order_lead_time' ] | limitTo: 5 -->
-                    </ul>
-                </div>
-                <div class="searchbox-list searchbox-foodlist ng-hide">
-                    <ul>
-                        <!-- ngRepeat: food in searchFoods | limitTo: 5 -->
-                    </ul>
-                </div>
-            </div>
-        </div>
+    
+    <style>
+        #all{position:relative;
+            height:200px;}
+        #uls li{
+            position:absolute;}
+
+        #ids{
+            border-radius: 10px;
+            position: absolute;
+            bottom: 15px;
+            height: 13px;
+            text-align: center;
+            font-size: 0;
+            left: 50%;
+            margin-left: -39px;}
+
+        #ids li{
+        padding-top: 8px;
+        width: 8px;
+        height: 0;
+        border-radius: 50%;
+        background: #fff;
+        cursor: pointer;
+        display: inline-block;
+        margin: 3px;}
+
+        #ids .cur{background: #ff5000 none repeat scroll 0 0;}
+    </style>
+
+    <div style="width:100%;height:3px"></div>
+    <div class="container ng-scope" id="all">
+        <ul id='uls'>
+            @foreach($adver as $k=>$v)
+            <li><img src="{{$v->lpic}}" width="100%" height="200px"></li>
+            @endforeach
+        </ul>
+        <ul id='ids'>
+            @for($i=0;$i<$count;$i++)
+            <li></li>
+            @endfor
+        </ul>
     </div>
-    <!-- ngIf: activities -->
-    <div class="place-tab clearfix container ng-scope">
-        <div class="place-fetchtakeout ng-isolate-scope" show-fetch-takeout-dialog="">
-            <img src="/home/images/takeout.408a87.png" alt="谁去拿外卖">
-        </div>
-    </div>
-    <div ng-show="!recentBoughtOnly" class="container ng-scope">
+    <div style="width:1200px;height:5px"></div>
+    <div class="container ng-scope" style="top:500px;">
+
         <div class="excavator container">
             <!-- ngIf: rstCategories.length -->
             <div class="excavator-filter ng-scope" ng-if="rstCategories.length">
                 <span class="excavator-filter-name">
                     商家分类:
                 </span>
-                 <li class="excavator-filter-item ng-binding ng-scope active list" value="0" style="cursor:pointer;">
+
+                 <li class="excavator-filter-item ng-binding ng-scope active list" value="0" style="cursor:pointer;font-size:15px;color:#666;">
+
                     全部商家
                 </li>
                 @foreach($data as $k=>$v)
                 <!-- ngRepeat: category in rstCategories -->
-                <li class="excavator-filter-item ng-binding ng-scope active parent list" style="cursor:pointer;"  value="{{$v['cid']}}">{{$v['cname']}}</li>
+
+                <li class="excavator-filter-item ng-binding ng-scope  parent list" style="cursor:pointer;font-size:15px;color:#666;line-height:30px"  value="{{$v['cid']}}">{{$v['cname']}}</li>
+
                   
                 @endforeach
                 
@@ -60,23 +74,62 @@
                    <div ng-show="subCategories" class="excavator-filter-subbox ng-hide" id="child">
                   
                      </div>
-               
-              
-                <!-- end ngRepeat: category in rstCategories -->
-               
-                    <!-- ngRepeat: subitem in subCategories -->
+
+                <script>
+                    var m = 1;
+                    var into = null;
+                    function move(){
+                        //定时器
+                    into = setInterval(function(){
+                        show(m++);
+                        if(m > 5){
+                            m = 0;
+                            }
+                            },4000)
+                        }
+                        move();
+
+                    //首先让第一张图片显示出来
+                    function show(i){
+                        //显示图片
+                        $('#uls li').eq(i).fadeIn(800);
+                        $('#uls li').eq(i).siblings().fadeOut(800);
+                        //点的效果
+                        $('#ids li').eq(i).addClass('cur');
+                        $('#ids li').eq(i).siblings().removeClass('cur');
+                    }
+                    show(0);
+
+                    $('#ids li').hover(function(){
+                        //获取图片的索引
+                        m = $(this).index();
+                        
+                        //让图片显示出来
+                        show(m++);
+                        //停止定时器
+                        clearInterval(into);
+
+                    },function(){
+                        move();
+                        if(m > 5){
+                            m = 0;
+                        }
+
+                    })
+                </script>
                
             </div>
-            <!-- end ngIf: rstCategories.length -->
+
         </div>
 
         <div class="place-rstbox clearfix">
             <div class="place-rstbox clearfix">
            
-    <div class="clearfix liebiaos" data="filteredRestaurants = (rstStream.restaurants | filter: rstStream.filter | filter: otherFilter | orderBy: [ '-is_opening', rstStream.orderBy || 'index' ])"
-    style="height: 1680px;">
+
+    <div class="clearfix liebiaos" style="height:500px;">
     @foreach($merchants as $k=>$v)  
-        <a href="/home/merchant/index/{{$v->mid}}" data-rst-id="221683" data-bidding="" target="_blank"
+        <a href="/home/merchant/index/{{$v->mid}}" target="_blank"
+
         class="rstblock">
             <div class="rstblock-logo">
                 <img src="{{$v->mpic}}"
@@ -91,7 +144,9 @@
                     </span>
                 </div>
                 <div class="rstblock-cost">
+
                     配送费¥6
+
                 </div>
                <div class="rstblock-activity">
                     @if($v->status==1)
@@ -119,6 +174,7 @@
 
 
 
+
 @endsection
 
 
@@ -126,8 +182,10 @@
 
     <script >
         // console.log($('.parent'));
+
         var g ;
        
+
         $('.parent').each(function(){
             $(this).click(function(){
                     $('.liebiaos').hide();
@@ -233,9 +291,11 @@
                   $('.liebiao').text('');    
             })
            
+
          })
         
     </script>
+
     <script>
         
         $('a[name=right]').hover(function(){
@@ -269,6 +329,8 @@
             $('div[name=hright]').attr('style','display:none');
         });
 
+
     </script>
     
+
 @endsection

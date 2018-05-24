@@ -59,7 +59,9 @@
                                 链接
                                 </th>
                                 <th
-                                style="width: 174px;">
+
+                                style="width: 300px;">
+
                                  图片
                                 </th>
                                 <th 
@@ -135,7 +137,9 @@
                         </tbody>
                     </table>
                     <div class="dataTables_info" id="DataTables_Table_1_info">
-                       当前{{$num}}条,共{{$count}}条
+
+                       共{{$count}}条
+
                     </div>
                     
                     <style>

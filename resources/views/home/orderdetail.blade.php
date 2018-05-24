@@ -2,454 +2,228 @@
 
 @section('title','饿了么-订单详情')
 
-@section('dingdan')
+@section('content')
+<div style="width:100%;height:10px"></div>
+    <div class="ng-scope">
+    <div class="profile-container container">
+        @include('layout.list')
+<div class="profile-panel" role="main">
+    <!-- ngIf: pageTitleVisible -->
+    <h3 ng-if="pageTitleVisible" class="profile-paneltitle ng-scope">
+        <span ng-bind="pageTitle" class="ng-binding">
+            订单详情
+        </span>
+        <span class="subtitle ng-binding" ng-bind-html="pageSubtitle | toTrusted">
+        </span>
+    </h3>
+    <!-- end ngIf: pageTitleVisible -->
+    <div class="profile-panelcontent" ng-transclude="">
+        <div class="loading ng-binding ng-isolate-scope ng-hide" loading="" ng-hide="progressDisplay">
+            <!-- ngIf: type==='profile' -->
+            <img ng-if="type==='profile'" src="//shadow.elemecdn.com/faas/desktop/media/img/profile-loading.4984fa.gif"
+            alt="正在加载" class="ng-scope">
+            <!-- end ngIf: type==='profile' -->
+            <!-- ngIf: type==='normal' -->
+            正在载入数据...
+        </div>
+        <div ng-show="progressDisplay" class="ng-scope">
+            <div orderprogress-refundinfo="" link="orderReady" class="ng-isolate-scope">
+                <!-- ngIf: refundingShow -->
+            </div>
 
-<div ng-switch="state.type" state="layoutState" class="ng-isolate-scope">
-        <!-- ngSwitchWhen: checkout -->
-            <header class="carttopbar" ng-switch-when="checkout" topbar-checkout=""
-            state="state">
-                
-            </header>
-        </div>
-        <div class="importantnotification container" role="banner">
-            
-        </div>
-        <div class="sidebar ng-hide">
-            <div class="sidebar-tabs">
-                <div class="toolbar-tabs-middle">
-                    <a class="toolbar-btn icon-order toolbar-close" href="#"
-                    hardjump="" tooltip="我的订单" tooltip-placement="left" ubt-click="toolbar_order">
-                        <!-- ngIf: sidebarCount.uncompletedOrder> 0 -->
+            <div link="orderReady" class="ng-isolate-scope">
+                <div class="orderprogress-rstinfo">
+                    <a href="javascript:">
+                        <img class="orderprogress-rstimg" width="44" height="44" src="{{$mid->mpic}}">
                     </a>
-                    <div class="toolbar-separator">
-                    </div>
-                    <a class="toolbar-cartbtn icon-cart toolbar-open toolbar-cartbtn-shownum"
-                    href="JavaScript:">
-                        购物车
-                        <!-- ngIf: foodCount.count -->
-                        <i class="toolbar-cartnum ng-binding ng-scope" ng-if="foodCount.count"
-                        ng-bind="foodCount.count">
-                            6
-                        </i>
-                        <!-- end ngIf: foodCount.count -->
-                    </a>
-                    <div class="toolbar-separator">
-                    </div>
-                    <a class="toolbar-btn icon-notice toolbar-open modal-hide" href="JavaScript:"
-                tooltip="我的信息">
-                        <!-- ngIf: messageCount.count -->
-                    </a>
-                </div>
-                <div class="toolbar-tabs-bottom">
-                    <div class="toolbar-btn icon-QR-code">
-                        <div class="dropbox toolbar-tabs-dropbox">
-                            <a href="#"
-                            target="_blank">
-                                <img src="/home/images/app.png" alt="下载手机应用">
-                                <p>
-                                    下载手机应用
-                                </p>
-                                <p class="icon-QR-code-bonus">
-                                    即可参加分享红包活动
-                                </p>
+                    <div class="orderprogress-rstgrid">
+                        <h4 class="orderprogress-rstname">
+                            <a class="inherit ng-binding" href="javascript:">
+                          {{$mid->mname}}
                             </a>
-                        </div>
-                    </div>
-                    <a class="toolbar-btn sidebar-btn-backtop icon-top" tooltip="回到顶部" title="回到顶部"
-                    href="JavaScript:" tooltip-placement="left" style="visibility: hidden;">
-                    </a>
-                </div>
-            </div>
-            <div class="sidebar-content">
-                <!-- ngInclude: activeTemplate ? ('/common/page/_block/sidebar/sidebar-'+
-                activeTemplate + '/sidebar-'+ activeTemplate + '.html') : '' -->
-            </div>
-        </div>
-        <!-- ngView: -->
-        <div ng-view="" role="main" class="ng-scope">
-            <div class="checkoutguide ng-isolate-scope" checkout-guide="" guide="guide">
-                <div class="container">
-                    <a class="checkoutguide-logo icon-logo" href="https://www.ele.me/">
-                    </a>
-                    <span class="checkoutguide-text ng-binding" ng-bind="guide.text">
-                        订单信息
-                    </span>
-                    <!-- ngIf: guide.step -->
-                    <div class="checkoutguide-content step2" ng-if="guide.step">
-                        <span class="checkoutguide-item active" ng-class="{active: guide.step &gt;= 1}">
-                            选择商品
-                        </span>
-                        <span class="checkoutguide-item active" ng-class="{active: guide.step &gt;= 2}">
-                            确认订单信息
-                        </span>
-                        <span class="checkoutguide-item" ng-class="{active: guide.step &gt;= 3}">
-                            成功提交订单
-                        </span>
-                        <p class="checkoutguide-line">
-                            <span class="line line1">
+                        </h4>
+                        <div class="orderprogress-rstextra">
+                            <span class="ng-binding">
+                           订单号：{{($res->oid)}}
                             </span>
-                            <span class="line line2">
-                            </span>
-                            <span class="line line3">
-                            </span>
-                            <span class="line line4">
-                            </span>
-                        </p>
-                    </div>
-                    <!-- end ngIf: guide.step -->
-                </div>
-            </div>
-            <div class="container clearfix ng-scope">
-                <!-- ngIf: loading -->
-                <!-- ngIf: !loading && nofood -->
-                <!-- ngIf: !loading && !nofood -->
-                <div ng-if="!loading &amp;&amp; !nofood" class="checkout-cart ng-scope ng-isolate-scope"
-                checkout-cart="cart">
-                    <div class="checkoutcart-container">
-                        <div class="checkoutcart-title">
-                            <h2>
-                                订单详情
-                            </h2>
                             
                         </div>
-                        <div class="checkoutcart-tablerow tablehead">
-                            <div class="cell itemname">
-                                商品
-                            </div>
-                            <div class="cell itemquantity">
-                                份数
-                            </div>
-                            <div class="cell itemtotal">
-                                小计（元）
-                            </div>
-                        </div>
-                        <!-- ngRepeat: basket in cart.vm.group -->
-                        <!-- ngIf: basket.length -->
-                        <dl ng-if="basket.length" ng-repeat="basket in cart.vm.group" class="checkoutcart-group ng-scope">
-                         
-                            <!-- ngRepeat: item in basket -->
-                            <dd ng-repeat="item in basket" class="ng-scope">
-                                @foreach($arr as $k=>$v)
-                                <div class="checkoutcart-tablerow">
-                                    <div class="cell itemname ng-binding" ng-bind="item.name" title="皮蛋瘦肉粥">
-                                        {{$v['gname']}}
-                                    </div>
-                                    <div class="cell itemquantity">
-                                      
-                                        <input ng-model="item.quantity" ng-change="cart.update(item)" ng-blur="cart.blur(item)"
-                                        class="ng-pristine ng-valid">{{$v['num']}}
-                                    
-                                    </div>
-                                    <div class="cell itemtotal " >
-                                       ￥{{$v['price']}}
-                                    </div>
-                                </div>
-                                @endforeach
-                            </dd>
-                        </dl>
+                    </div>
+                    <div class="orderprogress-rstoperate">
+                        <!-- ngIf: !favored -->
+                        <a href="javascript:" class="rstinfo-favor ng-scope">
+                            <i class="icon icon-order-favor">
+                            </i>
+                            收藏
+                        </a>
 
-                        <ul ng-if="cart.vm.extra || cart.vm.records" class="ng-scope">
-                            <!-- ngRepeat: item in cart.vm.extra -->
-                            <li ng-repeat="item in cart.vm.extra" class="checkoutcart-tablerow extra ng-scope">
-                                <div class="cell itemname">
-                                    <span ng-bind="item.name" title="配送费" class="ng-binding">
-                                        配送费
-                                    </span>
-                                    <!-- ngIf: item.name===' 配送费' -->
-                                    <span ng-if="item.name === &#39;配送费&#39;" class="icon-circle-help ng-scope"
-                                    tooltip="" tooltip-placement="left">
-                                    </span>
-                                    <!-- end ngIf: item.name===' 配送费' -->
-                                </div>
-                                <div class="cell itemquantity">
-                                </div>
-                                <div class="cell itemtotal ng-binding" ng-class="{minus: item.price &lt; 0}"
-                                ng-bind="&#39;¥&#39; + (item.price | number:2)">
-                                    ¥6.00
-                                </div>
-                            </li>
-                            <!-- end ngRepeat: item in cart.vm.extra -->
-                            <li ng-repeat="item in cart.vm.extra" class="checkoutcart-tablerow extra ng-scope">
-                                <div class="cell itemname">
-                                    <span ng-bind="item.name" title="" class="ng-binding">
-                                    </span>
-                                    <!-- ngIf: item.name===' 配送费' -->
-                                </div>
-                                <div class="cell itemquantity">
-                                </div>
-                              
-                            </li>
-                            <!-- end ngRepeat: item in cart.vm.extra -->
-                            <li ng-repeat="item in cart.vm.extra" class="checkoutcart-tablerow extra ng-scope">
-                                <div class="cell itemname">
-                                    <span ng-bind="item.name" title="餐盒" class="ng-binding">
-                                        餐盒
-                                    </span>
-                                    <!-- ngIf: item.name===' 配送费' -->
-                                </div>
-                                <div class="cell itemquantity">
-                                </div>
-                                <div class="cell itemtotal ng-binding" ng-class="{minus: item.price &lt; 0}"
-                                ng-bind="&#39;¥&#39; + (item.price | number:2)">
-                                    ¥4.00
-                                </div>
-                            </li>
-                        </ul>
-                        <!-- end ngIf: cart.vm.extra || cart.vm.records -->
-                        <div class="checkoutcart-total color-stress">
-                            ¥
-                            <span class="num ng-binding" ng-bind="cart.vm.total | number: 2">
-                                {{$sum}}
-                            </span>
-                        </div>
-                        <div class="checkoutcart-totalextra">
-                            共
-                            <span ng-bind="cart.pieces" class="ng-binding">
-                                {{$cnt}}
-                            </span>
-                            份商品
-                            <!-- ngIf: cart.vm.benefit -->
-                        </div>
+                        <a href="javascript:" class="ng-scope">
+                            <i class="icon icon-order-complaint">
+                            </i>
+                            投诉
+                        </a>
+
                     </div>
                 </div>
-				
-				<script>
-					function tan(){
-				        $('#haha').attr('style','display:block;z-index:1003;left:245px;top:100px;');
-				        $('#dvs').attr('style','display:block;z-index:1002;position:fixed;left:0px;top:0px;width:100%;height:100%;opacity:0.5;background:rgb(0, 0, 0);');
-					}
-				    
-				    function down(){
-				        $('#haha').attr('style','display:none;');
-				        $('#dvs').attr('style','display:none;');
-				    }
-
-				</script>
-				<div id="dvs" style="display:none;" onclick="down()"></div>
-                <form action="/home/orderest/pay" method="post">
-                <div class="checkout-content ng-scope">
-                    <div class="checkout-select ng-isolate-scope">
-                        <h2>
-                            收货地址
-                            <!-- <a class="checkout-addaddress" href="javascript:" >
-                                添加新地址
-                            </a> -->
-                        </h2>
-                        <!-- ngIf: !addressList.length -->
-                        <ul class="checkout-address-list showfirst">
-                            <!-- ngRepeat: item in addressList -->
-                            <li class="checkout-address ng-scope active">
-                                <i class="checkout-address-icon icon-location-line">
-                                </i>
-                                <div class="checkout-address-info">
-                                    <p class="ng-binding">
-                                        {{$user['uname']}}
-                                    </p>
-                                    <p class="color-weak ng-binding" ng-bind="item.address + item.address_detail">
-                                        {{$user['addr']}}
-                                    </p>
-                                </div>
-                                <div class="checkout-address-edit">
-                                    <a href="javascript:" onclick="tan()">
-                                        修改
-                                    </a>
-                                </div>
-                            </li>
-                            <!-- end ngRepeat: item in addressList -->
-                            <a class="checout-showmoreaddress ng-hide" href="javascript:">
-                                显示更多地址
-                                <i class="icon-arrow-down">
-                                </i>
-                            </a>
-                            <a class="checout-showmoreaddress ng-hide" href="javascript:">
-                                收起
-                                <i class="icon-arrow-up">
-                                </i>
-                            </a>
-                        </ul>
-                    </div>
-                    <div class="checkout-select">
-                        <h2 class="checkout-title">
-                            付款方式
-                            <span class="color-tip checkout-pay-tip">
-                                推荐使用在线支付，不用找零，优惠更多
+            </div>
+           
+            <div class="orderprogress-cardtable">
+                <div class="orderprogress-cardcell ng-isolate-scope" orderprogress-total=""
+                link="orderReady">
+                    <div class="orderprogress-total">
+                        <div class="orderprogress-totalrow orderprogress-totaltitle">
+                            <span class="cell name">
+                                菜品
                             </span>
-                        </h2>
-                        <ul class="clearfix">
-                            <!-- ngRepeat: pay in payList -->
-                            <li class="checkout-pay ng-scope active">
-                                <p ng-bind="pay.title" class="ng-binding">
-                                    在线支付
-                                </p>
-                                <p class="color-mute ng-binding" ng-bind="pay.tip">
-                                    支持微信、支付宝、QQ钱包及大部分银行卡
-                                </p>
-                            </li>
-                            <!-- end ngRepeat: pay in payList -->
-                        </ul>
-                    </div>
-                    <div class="checkout-select">
-                        <h2 class="checkout-title">
-                            选择优惠
-                        </h2>
+                          
+                            <span class="cell quantity">
+                                数量
+                            </span>
                        
-                        <p class="checkout-info">
-                            <span class="checkout-infolabel">
-                                使用优惠券
-                            </span>
-                            <span class="color-mute">
-                                网站不支持
-                                <em class="color-stress">
-                                    （仅手机客户端可用）
-                                </em>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="checkout-select">
-                        <h2 class="checkout-title">
-                            其他信息
-                        </h2>
-                        <div class="checkout-info">
-                            <span class="checkout-infolabel">
-                                配送方式
-                            </span>
-                            <span>
-                                本订单由
-                                <a ng-bind="&#39; [&#39; + delivery + &#39;] &#39;" class="ng-binding">
-                                    [商家]
-                                </a>
-                                提供配送
+                            <span class="cell price">
+                                小计（元）
                             </span>
                         </div>
-                      
-                        <div class="checkout-info">
-                            <span class="checkout-infolabel">
-                                发票信息
-                            </span>
-                            <span class="checkout-invoice" ng-mouseenter="toggleInvoice($event)" ng-mouseleave="toggleInvoice($event)">
-                                <input class="checkout-input ng-pristine ng-valid" placeholder="仅在饿了么 APP 中支持开发票哦" disabled="disabled">
-                                <ul class="checkout-invoice-list ng-hide" ng-show="showInvoice">
-                                    <!-- ngRepeat: item in invoices -->
-                                </ul>
-                            </span>
-                        </div>
-                        {{ csrf_field() }}
-                        <div class="checkout-info">
-                            <span class="checkout-infolabel">
-                                客户嘱咐
-                            </span>
+                  
+                        <!-- ngRepeat: row in totalList -->
+                        <div ng-repeat="row in totalList" ng-switch="" on="row.type" class="ng-scope">
+                        
+                        @foreach($num as $k=>$v)
+                            <div class="orderprogress-totalrow ng-scope">
                             
-                            <span>
-                                <input name="details" class="checkout-input ng-pristine ng-valid">
-                            </span>
-                            
+                                <span class="cell name ng-binding">
+                                {{$v->gname}}
+                                </span>
+                                
+                                <span class="cell quantity ng-binding">
+                                {{$v->num}}
+                                </span>
+                                
+                                <span class="cell price ng-binding">
+                            {{$v->price*$v->num}}
+                                </span>
+                              
+                            </div>
+                            @endforeach
+                             
+                            <!-- ngSwitchWhen: extra -->
                         </div>
-                    </div>
-                    <div>
-                        <button class="btn-stress btn-lg ng-binding ng-isolate-scope">确认下单</button>
-                          </form>
-                        <div class="checkout-dapp">
-                            <p class="checkout-dapp-tip">
-                                扫码下载APP
-                                <br>
-                                APP下单立享优惠
-                            </p>
-                            <i class="icon-qrcode checkout-dapp-qrcode">
-                            </i>
-                            <i class="icon-uniE029 checkout-dapp-arrow">
-                            </i>
-                            <img src="/home/images/app.png" alt="扫一扫下载饿了么手机 App">
+                        <!-- end ngRepeat: row in totalList -->
+                        <div ng-repeat="row in totalList" ng-switch="" on="row.type" class="ng-scope">
+                          
+                        </div>
+
+                        <div ng-repeat="row in totalList" ng-switch="" on="row.type" class="ng-scope">
+                            <!-- ngSwitchWhen: baseline -->
+                            <div ng-switch-when="baseline" class="orderprogress-baseline ng-scope">
+                            </div>
+
+                        </div>
+                        <!-- end ngRepeat: row in totalList -->
+                        <div ng-repeat="row in totalList" ng-switch="" on="row.type" class="ng-scope">
+                            
+                            <div ng-switch-when="extra" class="orderprogress-totalrow ng-scope">
+                                <span class="cell name ng-binding" ng-bind="row.extra.name">
+                                    配送费
+                                </span>
+                                <span class="cell quantity">
+                                </span>
+                                <span class="cell price ng-binding">
+                                   6
+                                </span>
+                            </div>
+                        </div>
+                        <!-- end ngRepeat: row in totalList -->
+                        <div ng-repeat="row in totalList" ng-switch="" on="row.type" class="ng-scope">
+                            <!-- ngSwitchWhen: baseline -->
+                            <div ng-switch-when="baseline" class="orderprogress-baseline ng-scope">
+                            </div>
+                        </div>
+                        <!-- end ngRepeat: row in totalList -->
+                        <div class="orderprogress-totalactual">
+                            实际支付：
+                       
+                            <span ng-bind="order.total_amount | number:2" class="ng-binding">
+                            {{$sum}}
+                            </span>
+                           
                         </div>
                     </div>
                 </div>
-                <!-- end ngIf: !loading && !nofood -->
+          
+                <div class="orderprogress-cardcell rightside ng-isolate-scope">
+                    <div class="orderprogress-deliveryinfo">
+                        <h5 class="orderprogress-deliverytitle">
+                            配送信息
+                        </h5>
+                        <div class="orderprogress-deliverygroup">
+                            <p>
+                                <span class="orderprogress-deliverykey">
+                                    配送方式：
+                                </span>
+                                <span class="ng-binding">
+                                    {{$mid->mname}}提供配送服务
+                                </span>
+                            </p>
+                            <p>
+                                <span class="orderprogress-deliverykey">
+                                    送达时间：
+                                </span>
+                                <span class="ng-binding">
+                                    尽快送出
+                                </span>
+                            </p>
+                        </div>
+                        <div class="orderprogress-deliverygroup">
+                            <p>
+                                <span class="orderprogress-deliverykey">
+                                    联 系 人：
+                                </span>
+                                <span class="ng-binding">
+                                   {{$user->name}}
+                                </span>
+                            </p>
+                            <p>
+                                <span class="orderprogress-deliverykey">
+                                    联系电话：
+                                </span>
+                                <span class="ng-binding">
+                                   {{$user->tel}}
+                                </span>
+                            </p>
+                            <p>
+                                <span class="orderprogress-deliverykey">
+                                    收货地址：
+                                </span>
+                                <span class="ng-binding">
+                                   {{$user->addr}}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="orderprogress-deliverygroup tail">
+                            <p>
+                                <span class="orderprogress-deliverykey">
+                                    发票信息：
+                                </span>
+                                <span class="ng-binding">
+                                    无发票
+                                </span>
+                            </p>
+                            <p>
+                                <span class="orderprogress-deliverykey">
+                                    备 注：
+                                </span>
+                                <span class="ng-binding">
+                                    无备注
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="orderprogress-roundborder">
             </div>
         </div>
-       <div class="addressdialog" id="haha"  style="display:none;">
-		    <div class="addressdialog-close" id="off" onclick="down()">
-		    </div>
-		    <div class="addressdialog-header">
-		        添加新地址
-		    </div>
-		    <div class="addressdialog-content">
-		        <!-- <form action="" > -->
-		        
-		        <div class="addressform">
-		            <div>
-		                <div class="addressformfield">
-		                    <label id="xing">
-		                        姓名
-		                    </label>
-		                    <input placeholder="请输入您的姓名" name="uname">
-		                    <div class="addressformfield-hint">
-		                        <span>
-		                        </span>
-		                    </div>
-		                </div>
-		                <div class="addressformfield sexfield">
-		                    <label>
-		                        性别
-		                    </label>
-		                    <div>
-		                        <input id="sexfield-1-male" name="sex" type="radio" value="1">
-		                        <label for="sexfield-1-male">
-		                            先生
-		                        </label>
-		                        <input id="sexfield-1-female" type="radio" name="sex" value="2">
-		                        <label for="sexfield-1-female">
-		                            女士
-		                        </label>
-		                    </div>
-		                    <div class="addressformfield-hint">
-		                        <span>
-		                        </span>
-		                    </div>
-		                </div>
-		                <div class="addressformfield">
-		                    <label>
-		                        位置
-		                    </label>
-		                    <input placeholder="请输入小区、大厦或学校" name="addr">
-		                    <div class="address-suggestlist">
-		                        <ul>
-		                        </ul>
-		                    </div>
-		                    <div class="addressformfield-hint">
-		                        <span>
-		                        </span>
-		                    </div>
-		                </div>
-		                <div class="addressformfield">
-		                    <label>
-		                        详细地址
-		                    </label>
-		                    <input placeholder="单元、门牌号" name="detail">
-		                    <div class="addressformfield-hint">
-		                        <span>
-		                        </span>
-		                    </div>
-		                </div>
-		                <div class="addressformfield phonefield">
-		                    <label>
-		                        手机号
-		                    </label>
-		                    <input placeholder="请输入您的手机号" name="phone">
-		                    <div class="addressformfield-hint">
-		                        <span>
-		                        </span>
-		                    </div>
-		                </div>
-		            </div>
-		            <div class="addressform-buttons">
-		                <button  onclick="up();down()">
-		                    保存
-		                </button>
-		                <button type="button" onclick="down()">
-		                    取消
-		                </button>
-		            </div>
-		        </div>
-		        <!-- </form> -->
-		    </div>
-		</div>
+    </div>
+</div>
 @endsection

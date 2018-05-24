@@ -12,7 +12,15 @@ use Session;
 
 class LoginController extends Controller
 {
-	// 验证码
+
+    // 登录
+    public function login()
+    {
+      return view('home.login');
+    }
+
+	  // 验证码
+
     public function captcha()
     {
         //生成验证码图片的Builder对象，配置相应属性  

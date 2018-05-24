@@ -7,9 +7,11 @@ use App\Http\Controllers\Controller;
 use App\AdminGreencate;
 use App\AdminMerchant;
 use App\AdminGreen;
+
 use App\Enshrine;
 
 use Session;
+
 class MerchantController extends Controller
 {
     public function index($id)
@@ -17,6 +19,7 @@ class MerchantController extends Controller
     	$merchant = AdminMerchant::where('mid',$id)->first();
     	$data = AdminGreencate::where('mid',$id)->get();
     	$greens = AdminGreen::where('mid',$id)->get();
+
         
         if(session::get('homeUser.uid')){
          $arr = session::get('mid');
@@ -39,5 +42,6 @@ class MerchantController extends Controller
     	 $user = session::get('homeUser.uid');
          $enshrine = Enshrine::where('uid',$user)->where('mid',$id)->first();
     	return view('home/shopdetail',['data'=>$data,'merchant'=>$merchant,'mid'=>$id,'enshrine'=>$enshrine]);
+
     }
 }

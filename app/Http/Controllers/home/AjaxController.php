@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use App\AdminCate;
 use App\AdminMerchant;
 use App\AdminGreen;
+
 use App\AdminUser;
 use App\Enshrine;
+
 
 
 use Session;
@@ -67,6 +69,7 @@ class AjaxController extends Controller
       // dd($data);
        return $data;
     }
+
     public function enshrineajax($id)
     {
          $user = session::get('homeUser.uid');
@@ -80,4 +83,5 @@ class AjaxController extends Controller
          }
 
     }
+
 }

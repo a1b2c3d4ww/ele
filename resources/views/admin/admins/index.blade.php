@@ -112,7 +112,9 @@
                         <td class=" ">
                    
 	                     	 <span class="btn-group">	                     
-	                            <a href="/admin/user/{{$v->aid}}/edit" class="btn btn-small"><i class="icon-pencil"></i></a>
+
+	                            <a href="/admin/admins/user/{{$v->aid}}/edit" class="btn btn-small"><i class="icon-pencil"></i></a>
+
                                 
                             <form action="/admin/user/{{$v->aid}}" method="post" style='display:inline'>
                                 {{csrf_field()}}

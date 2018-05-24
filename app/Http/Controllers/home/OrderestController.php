@@ -38,7 +38,7 @@ class OrderestController extends Controller
    		session::put('orders.sum',$sum);
    		session::put('orders.mid',$id);
    		session::put('carts',$arr);
-    	 return view('home/orderdetail',['sum'=>$sum,'user'=>$user,'arr'=>$arr,'cnt'=>$cnt]);
+    	 return view('home/orderinfo',['sum'=>$sum,'user'=>$user,'arr'=>$arr,'cnt'=>$cnt]);
     }
     public function pay(Request $req)
     {

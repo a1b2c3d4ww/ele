@@ -10,7 +10,9 @@ use App\AdminReviews;
 use App\ReadOrders;
 use App\AdminGreen;
 use App\AdminMerchant;
+
 use App\Enshrine;
+
 use Session;
 class MyselfController extends Controller
 {
@@ -39,15 +41,18 @@ class MyselfController extends Controller
 		$order = AdminOrders::where('uid',$id)->first();
 		
 		
+
 		
 		
 		return view('home.orders.orderdetails',['res'=>$res,'num'=>$num,'mid'=>$mid,'user'=>$user,'order'=>$order,'sum'=>$sum]);
+
 	}
 
 
     public function myself()
 	{	
 		 $id = Session::get('homeUser.uid');
+
 	    $res = AdminMember::where('uid',$id)->first();
 	    $order = AdminOrders::where('uid',$id)->get();
 	  
@@ -56,6 +61,7 @@ class MyselfController extends Controller
 	     // dd($order);
 	     
 	    
+
 
 		return view('home.myself',['res'=>$res,'order'=>$order]); 
 	}
@@ -76,6 +82,7 @@ class MyselfController extends Controller
 		 
 		return view('home.reviews',['res'=>$res]);
 	}
+
 	//收藏
 	public function enshrine()
 	{
@@ -111,4 +118,5 @@ class MyselfController extends Controller
 		return back();
 		
 	}
+
 }

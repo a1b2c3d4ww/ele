@@ -18,13 +18,10 @@ class MyorderController extends Controller
 	    $res = AdminMember::where('uid',$id)->first();
 	    $order = AdminOrders::where('uid',$id)->get();
 	  
-	    
 
-	     // dd($order);
-	     
-	    
 
-		return view('home.orders.myorder',['res'=>$res,'order'=>$order]); 
+		return view('home.myorder',['res'=>$res,'order'=>$order]); 
+
 	
 	}
 	// 商家详情
@@ -33,6 +30,16 @@ class MyorderController extends Controller
 		
 		return view('home.shopdetail');
 	}
+
+
+	// 订单详情
+	public function orderinfo()
+	{	
+		
+		return view('home.orderinfo');
+	}
+
+
     	// 订单支付
 	public function orderpay()
 	{

@@ -1,7 +1,9 @@
 @extends('layout.home')
 
 @section('title','饿了么-支付成功')
+
 <meta http-equiv="refresh" content="3;url=/">
+
 @section('payend')
 <div ng-switch="state.type" state="layoutState" class="ng-isolate-scope"></div>
 <div class="importantnotification container" role="banner">
@@ -102,6 +104,7 @@
             <span class="color-weak">
                 送货至：
                 <em class="ng-binding">
+
                     {{$user['uname']}}(先生)
                 </em>
                 <em class="ng-binding">
@@ -109,6 +112,7 @@
                 </em>
                 <em class="pay-header-address ng-binding">
                    {{$user['addr']}}
+
                 </em>
             </span>
             <div class="ordersuccess-tip">

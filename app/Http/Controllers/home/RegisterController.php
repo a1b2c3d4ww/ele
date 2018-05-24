@@ -12,6 +12,15 @@ use Hash;
 
 class RegisterController extends Controller
 {
+
+
+    // 注册
+    public function reg()
+    {
+        return view('home.reg');
+    }
+
+
     public function yzm()
     {
         require_once('./home/lib/Ucpaas.class.php');

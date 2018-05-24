@@ -12,8 +12,10 @@ class AdminOrders extends Model
     public $guarded = array('');
     public $timestamps = false;
 
+
      public function details()
     {
     	return $this->hasMany('App\ReadOrders','oid','oid');
     }
+
 }
