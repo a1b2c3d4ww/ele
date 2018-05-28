@@ -10,7 +10,21 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//密码相关
+Route::get('/home/forget','home\PasswordController@forget');
+Route::get('/home/forget2','home\PasswordController@forget2');
+Route::get('/home/forget3','home\PasswordController@forget3');
+Route::get('/home/forget4','home\PasswordController@forget4');
+Route::post('/home/doforget','home\PasswordController@doforget');
+Route::post('/home/doforget2','home\PasswordController@doforget2');
+Route::post('/home/doforget3','home\PasswordController@doforget3');
+Route::get('/home/passwordAjax','home\AjaxController@passwordAjax');
+
+
+
 Route::get('/','home\FirstController@index');//前台首页
+Route::get('/home/firstlist','home\AjaxController@firstlist');
 Route::get('/home/login','home\HomeController@login');//登录
 Route::post('/home/dologin','home\LoginController@dologin');//登录验证
 Route::get('/home/code/{tmp}','home\LoginController@captcha');//验证码
@@ -26,16 +40,15 @@ Route::get('/home/cartajax/{id}','home\AjaxController@cartajax');
 Route::get('/home/addcartajax/{id}','home\AjaxController@addcartajax');//添加菜品	
 Route::get('/home/subcartajax/{id}','home\AjaxController@subcartajax');	//减少菜品
 Route::get('/home/enshrineajax/{id}','home\AjaxController@enshrineajax');	//收藏
+Route::get('/home/merchant/index/{id}','home\MerchantController@index');//商家详情
 //前台
 
-Route::group([],function(){
-
-
-
-
+Route::group(['middleware'=>'login'],function(){
+	
+	Route::get('/home/updatepwd','home\PasswordController@updatepwd');//修改密码
+	Route::post('/home/doupdate','home\PasswordController@doupdate');//修改验证
 	Route::get('/home/orderinfo','home\MyorderController@orderinfo');//订单信息
 	Route::get('/home/orderpay','home\MyorderController@orderpay');//订单支付
-	Route::get('/home/merchant/index/{id}','home\MerchantController@index');//商家详情
 	Route::get('/home/orderest/index/{id}','home\OrderestController@index');//提交订单
 	Route::post('/home/orderest/pay','home\OrderestController@pay');//订单支付
 	Route::get('/home/orderest/finish','home\OrderestController@finish');//订单完成
@@ -51,10 +64,9 @@ Route::group([],function(){
 	Route::get('/home/enshrine','home\MyselfController@enshrine');//我的收藏
 	Route::get('/home/enshrine/del/{id}','home\MyselfController@enshrinedel');//删除收藏
 	Route::get('/home/mycarts','home\MyselfController@mycarts');//我的购物车
-	Route::get('/home/mycarts/del/{id}','home\MyselfController@mycartsdel');//我的购物车
+	Route::get('/home/mycarts/del/{id}','home\MyselfController@mycartsdel');
 	Route::get('/home/reviews/{id}','home\MyselfController@reviews');//评论
 
-	Route::resource('home/user','home\UserController');
 	
 });
 Route::group([],function(){

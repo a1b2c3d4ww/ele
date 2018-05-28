@@ -24,7 +24,7 @@ class RequestForm extends FormRequest
     public function rules()
     {
         return [
-            'cname' => 'required|unique:take_admins|regex:/^\w{1,12}$/',
+            'cname' => 'required|unique:take_cates|regex:/^\W{1,12}$/',
           
         ];
     }

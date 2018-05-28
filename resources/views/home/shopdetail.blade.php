@@ -157,6 +157,7 @@
             </span>
         </div>
 
+
         @if($enshrine)
         <a class="shopguide-favor"  " href="#">
 
@@ -177,6 +178,7 @@
         </a>
         @endif
 
+
     </div>
 </div>
 <div class="ng-scope ng-isolate-scope">
@@ -187,7 +189,9 @@
                 <a class="shopnav-tab active" href="javascript:">
                     所有商品
                 </a>
-                <a class="shopnav-tab" href="/home/reviews/7">
+
+                <a class="shopnav-tab" href="/home/reviews/{{$merchant->mid}}">
+
                     评价
                 </a>
                 <a class="shopnav-tab" href="javascript:">
@@ -299,15 +303,13 @@ sticky-fn="shopNavSticky">
             <script src="/home/js/jquery.fly.min.js" type="text/javascript"></script>
             <script>
                    var a =  $('button[name=jia]').length;
-                   // var gid =  $('button[name=jia]').val();
-                   // console.log(gid);
                    var sum = 0; 
                    var gname; 
                    var j=0;
                     var arrs = [];
                     var arr = Array(a).fill(0);
                    $('button[name=jia]').each(function(index,element){
-                        // var gname;
+
 
                         this.onclick = function(){
                                 
@@ -329,7 +331,6 @@ sticky-fn="shopNavSticky">
 
                             $.get('/home/addcartajax/'+gid,{},function(data){
                                 
-                               // console.log(arr[index]);
                                   if(!arrs.contains(gid)){
                                       arrs.unshift(gid);
                                    }
@@ -337,14 +338,14 @@ sticky-fn="shopNavSticky">
                                        $('.itemname').eq(ins).val(data.gname)
                                        $('.count').eq(ins).val(arr[index]);
 
+
                                        $('.count').eq(ins).val(arr[index]);
                                        $('.itegid').eq(ins).val(gid);
                                        $('.price').eq(ins).val(arr[index]*data.price);
 
                                          
                                  })
-                            
-                          // console.log(index);
+
                        
                         flyer.fly({
                             start:{
@@ -367,14 +368,9 @@ sticky-fn="shopNavSticky">
                             $('#jiesuan').removeClass('disabled');
                             $('#jiesuan').removeAttr('disabled');
 
-                        
-
-                            sum =0;       
-                            // return gname;
+                            sum =0;     
                            
                         }
-                       
-                       // console.log(arr);
               
                     })
 
@@ -391,7 +387,7 @@ sticky-fn="shopNavSticky">
                     } return false;  
 
                 }  
-                   // function up(){
+
 
                    $('button[name=jian]').each(function(index,element){
                                 
@@ -408,36 +404,28 @@ sticky-fn="shopNavSticky">
                             for(var i = 0; i < arr.length; i++) {
                                     sum += arr[i];
 
+
                             }   
 
+
                                $.get('/home/subcartajax/'+gid,{},function(data){
-                                if(!arrs.contains(gid)){
-                                      arrs.unshift(gid);
-                                   }
-
-
-
+                                if(arrs.contains(gid)){
                                        var ins = arrs.indexOf(gid);
                                        $('.itemname').eq(ins).val(data.gname)
                                        $('.count').eq(ins).val(arr[index]);
-                                      // console.log(arr[index]) ;
-
                                        $('.itegid').eq(ins).val(arrs);
-                                       // 
                                        $('.price').eq(ins).val(arr[index]*data.price);
-
-                              
+                                   }
 
                              })
+
                             var aa =  $('#btn-add').text(sum);
                             sum =0;
-
                             if(aa.text()<1){
                                 $('#btn-add').removeClass('shop-cartpieces');
                                 $('#btn-add').empty();
                                 $('#jiesuan').addClass('disabled');
-                                $('#jiesuan').attr('disabled');
-                                $('#jiesuan').text('购物车是空的');
+                                $('#jiesuan').attr('disabled','disabled');
                             };
                         })    
                     })
@@ -451,8 +439,6 @@ sticky-fn="shopNavSticky">
                             }  
                             return false;  
                         }  
-               // }
-               // up();
 
                     function hhh(){
                        $('div[name=abcde] input').each(function(){
@@ -465,9 +451,8 @@ sticky-fn="shopNavSticky">
                        })
                             $('#jiesuan').addClass('disabled');
                                 $('#jiesuan').attr('disabled');
-                                $('#jiesuan').text('购物车是空的');
                             $('.shop-cartbasket-tablerow').remove();
-                            // only();
+
                    }
 
             </script>
@@ -482,23 +467,23 @@ sticky-fn="shopNavSticky">
                  $('.carts').each(function(){
                     $(this).click(function(){
                     var gid = $('input[name=hide]').val();
-                    // $(this).siblings().find('.ng-valid').val(1);
-                    // console.log(gid);
                     $(this).hide();
                     $(this).next().show();
                     $.get('/home/cartajax/'+gid,{},function(data){
-                        // console.log(data);
+
                 })
             })
         })
 
                 var dia = `<div class="shop-cartbasket-tablerow ng-scope dia" style="line-height:45px;">
 
+
                                 <input class="mine itemname" name="gname[]"  value ="">
                                 <input type="hidden" class="itegid" name="gid[]"  value ="">
                                 <input class="your count" name="num[]" value="">
                                 
                                  <input class="her price" name ="price[]" value="">元
+
 
                             </div>`;
 
@@ -531,6 +516,8 @@ sticky-fn="shopNavSticky">
                 }
 
 
+
+
  
             </script>
 
@@ -539,7 +526,9 @@ sticky-fn="shopNavSticky">
 
                     <div class="shop-cart">
 
+
                     <form action="/home/orderest/index/{{$mid}}" method="get">
+
 
                     <div class="shop-cartbasket" id="shopbasket" style="top: -44px; height: auto;">
 
@@ -566,7 +555,6 @@ sticky-fn="shopNavSticky">
                         </div>
 
                         
-
                         <div class="shop-cartbasket-empty ng-scope">
                             <div class="icon-cart">
                             </div>
@@ -588,6 +576,7 @@ sticky-fn="shopNavSticky">
                                 配送费¥6
                             </div>
                         </div>
+
 
                         <button class="shop-cartfooter-checkout ng-binding disabled" disabled="disabled" id="jiesuan" onclick="jiesuan()">
                             结算
@@ -761,11 +750,8 @@ sticky-fn="shopNavSticky">
 
 @section('js')
 
-
     <script>
-       
-
-      
+           
 
         $('#one').hover(function(){
 
@@ -790,6 +776,7 @@ sticky-fn="shopNavSticky">
     </script>
 
 
+
     <script type="text/javascript">
         $('.enshrine').click(function(){
             $.get('/home/enshrineajax/'+{{$mid}},{},function(data){
@@ -807,5 +794,6 @@ sticky-fn="shopNavSticky">
             })
         })
     </script>
+
 
 @endsection

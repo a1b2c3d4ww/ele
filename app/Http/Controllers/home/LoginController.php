@@ -13,6 +13,7 @@ use Session;
 class LoginController extends Controller
 {
 
+
     // 登录
     public function login()
     {
@@ -20,6 +21,7 @@ class LoginController extends Controller
     }
 
 	  // 验证码
+
 
     public function captcha()
     {
@@ -56,10 +58,10 @@ class LoginController extends Controller
   		}
 
   		$code = $req->input('code');
-          $check = Session::get('code');
-          if($code!=$check){
-              return back()->with('err','验证码错误');
-          }
+      $check = Session::get('code');
+      if($code!=$check){
+          return back()->with('err','验证码错误');
+      }
 
   		$pass = $req->input('password');
   		if(!Hash::check($pass,$data->password)){

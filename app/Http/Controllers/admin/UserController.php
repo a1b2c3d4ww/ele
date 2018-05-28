@@ -16,7 +16,9 @@ use App\AdminUser;
 use App\AdminReviews;
 use App\AdminOrders;
 
+
 use Hash;
+
 
 
 class UserController extends Controller
@@ -102,8 +104,10 @@ class UserController extends Controller
            $res = $req->except('_token','repass');
            $res['ctime'] = time();
 
+
            $res['password'] = Hash::make($req->input('password'));
             // Hash::make($req->input('password'));
+
            // dd($res);
            // $data = AdminUser::create($res);
            // dd($data);
@@ -173,6 +177,7 @@ class UserController extends Controller
     {
         // dd($req->all());
         $res = $req->except('_token','_method','repass');
+        $res['password'] = Hash::make($req->input('password'));
         // dd($res);
         try{
               AdminUser::where('aid',$id)->update($res);

@@ -143,7 +143,9 @@
                 </table>
                 
 
+
                 <div class="dataTables_info" id="DataTables_Table_1_info">共{{$count}}条</div>
+
 
 <style>
                     .pagination li{

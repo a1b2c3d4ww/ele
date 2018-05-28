@@ -11,6 +11,15 @@
     <div class="mws-panel-body no-padding">
 
         
+        @if (count($errors) > 0)
+            <div class="mws-form-message error">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li style='color:blue;font-size:17px;list-style:none'>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <form action="/admin/member" method='post' class="mws-form" enctype='multipart/form-data'>
             <div class="mws-form-inline">

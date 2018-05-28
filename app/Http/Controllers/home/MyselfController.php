@@ -11,7 +11,9 @@ use App\ReadOrders;
 use App\AdminGreen;
 use App\AdminMerchant;
 
+
 use App\Enshrine;
+
 
 use Session;
 class MyselfController extends Controller
@@ -42,9 +44,11 @@ class MyselfController extends Controller
 		
 		
 
+
 		
 		
-		return view('home.orders.orderdetails',['res'=>$res,'num'=>$num,'mid'=>$mid,'user'=>$user,'order'=>$order,'sum'=>$sum]);
+		return view('home.orderdetail',['res'=>$res,'num'=>$num,'mid'=>$mid,'user'=>$user,'order'=>$order,'sum'=>$sum]);
+
 
 	}
 
@@ -55,12 +59,16 @@ class MyselfController extends Controller
 
 	    $res = AdminMember::where('uid',$id)->first();
 	    $order = AdminOrders::where('uid',$id)->get();
+
 	  
 		// dd(session::get('mid'));
 	    // dd($res);
+
 	     // dd($order);
 	     
 	    
+
+
 
 
 		return view('home.myself',['res'=>$res,'order'=>$order]); 
@@ -72,6 +80,7 @@ class MyselfController extends Controller
 		$id = Session::get('homeUser.uid');
 
 	    $res = AdminMember::where('uid',$id)->first();	
+
 		return view('home.myinfo',['res'=>$res]);
 	}
 	//评价
@@ -118,5 +127,6 @@ class MyselfController extends Controller
 		return back();
 		
 	}
+
 
 }

@@ -4,7 +4,6 @@
 @section('title','饿了么-网上订餐')
 
 @section('content')
-
     
     <style>
         #all{position:relative;
@@ -39,7 +38,7 @@
     <div class="container ng-scope" id="all">
         <ul id='uls'>
             @foreach($adver as $k=>$v)
-            <li><img src="{{$v->lpic}}" width="100%" height="200px"></li>
+            <li><a href="{{$v->lname}}"><img src="{{$v->lpic}}" width="100%" height="200px"></a></li>
             @endforeach
         </ul>
         <ul id='ids'>
@@ -50,23 +49,18 @@
     </div>
     <div style="width:1200px;height:5px"></div>
     <div class="container ng-scope" style="top:500px;">
-
         <div class="excavator container">
             <!-- ngIf: rstCategories.length -->
             <div class="excavator-filter ng-scope" ng-if="rstCategories.length">
                 <span class="excavator-filter-name">
                     商家分类:
                 </span>
-
                  <li class="excavator-filter-item ng-binding ng-scope active list" value="0" style="cursor:pointer;font-size:15px;color:#666;">
-
                     全部商家
                 </li>
                 @foreach($data as $k=>$v)
                 <!-- ngRepeat: category in rstCategories -->
-
                 <li class="excavator-filter-item ng-binding ng-scope  parent list" style="cursor:pointer;font-size:15px;color:#666;line-height:30px"  value="{{$v['cid']}}">{{$v['cname']}}</li>
-
                   
                 @endforeach
                 
@@ -74,7 +68,6 @@
                    <div ng-show="subCategories" class="excavator-filter-subbox ng-hide" id="child">
                   
                      </div>
-
                 <script>
                     var m = 1;
                     var into = null;
@@ -119,17 +112,14 @@
                 </script>
                
             </div>
-
         </div>
 
         <div class="place-rstbox clearfix">
             <div class="place-rstbox clearfix">
            
-
     <div class="clearfix liebiaos" style="height:500px;">
     @foreach($merchants as $k=>$v)  
         <a href="/home/merchant/index/{{$v->mid}}" target="_blank"
-
         class="rstblock">
             <div class="rstblock-logo">
                 <img src="{{$v->mpic}}"
@@ -144,9 +134,7 @@
                     </span>
                 </div>
                 <div class="rstblock-cost">
-
                     配送费¥6
-
                 </div>
                <div class="rstblock-activity">
                     @if($v->status==1)
@@ -167,12 +155,9 @@
 
 <div class="clearfix liebiao" style="height: 840px;">
             
-
         </div>
     </div>
 </div>
-
-
 
 
 @endsection
@@ -182,10 +167,7 @@
 
     <script >
         // console.log($('.parent'));
-
-        var g ;
-       
-
+        var g ;    
         $('.parent').each(function(){
             $(this).click(function(){
                     $('.liebiaos').hide();
@@ -291,15 +273,75 @@
                   $('.liebiao').text('');    
             })
            
-
-         })
-        
+         })  
     </script>
 
     <script>
+        var dvs = $('<div class="rstpopover placeright" name="hright"></div>');
+        var dvs1 = $('<div class="rstpopover-arrow"></div>');
+        dvs.append(dvs1);
+        var dvs2 = $('<div class="rstpopover-title"></div>');
+        dvs.append(dvs2);
+        var dvs3 = $('<div class="rstpopover-flavors"></div>');
+        dvs.append(dvs3);
+        var ul1 = $('<ul class="rstpopover-activities"></ul>');
+        dvs.append(ul1);
+        var ul2 = $('<ul class="rstpopover-delivery"></div>');
+        var li4 =$('<li>配送费¥6</li>');
+        ul2.append(li4);
+        var li5 = $('<li>平均<span class="color-stress plrtiny">30</span>分钟送达</li>');
+        ul2.append(li5);
+        dvs.append(ul2);
+        var dvs4 = $('<div class="rstpopover-notice"></div>');
+
         
-        $('a[name=right]').hover(function(){
-            // 获取a[name=right]的左侧偏移量和宽
+        $('.rstblock').hover(function(){
+            var aa = $(this).attr('href');
+            var mid = aa.substring(21);
+
+                $.ajax({
+                    url:'/home/firstlist',
+                    data:'mid='+mid,
+                    type:'GET',
+                    success:function(data){
+
+                    dvs2.text(data.mname);
+                    dvs3.text(data.details);
+
+                    if(data.status==1){
+                        var li1 = $('<li></li>');
+                        li1.append(`<i style="background:#E75959;">
+                                新
+                            </i>新店开张，欢迎光临`);
+                        ul1.append(li1);
+                    }
+                    if(data.safe==1){
+                        var li2 = $('<li></li>');
+                        li2.append(` <i style="background:#fff;color:#999999;border:1px solid;padding:0;">
+                                保
+                            </i>该商户食品安全已由中国太平洋保险承保，食品安全有保障`);
+                        ul1.append(li2);
+                    }
+                    if(data.bill==1){
+                        var li3 = $('<li></li>');
+                        li3.append(` <i style="background:#fff;color:#999999;border:1px solid;padding:0;">
+                                票
+                            </i>该商家支持开发票，请在下单时填好发票开头`);
+                        ul1.append(li3);
+                    }
+
+                },
+                    error:function(data){
+                        console.log('发送失败');
+                    },
+                    timeout:3000,
+                    async:false
+            })
+        
+            
+            $(this).after(dvs);
+
+            // 获取.rstblock的左侧偏移量和宽
             var l = $(this).offset().left; 
             var w = $(this).width(); 
             // 求出div[name=hright]的左侧偏移量
@@ -314,23 +356,21 @@
                 $('div[name=hright]').addClass('placeright');
             }
 
-            // 获取a[name=right]的顶部偏移量
+            // 获取.rstblock的顶部偏移量
             var t = $(this).offset().top; 
             var h = $(this).height();
 
             // 求出div[name=hright]的顶部偏移量
-            var aa = $('a[name=right]').eq(0).offset().top;
+            var aa = $('.rstblock').eq(0).offset().top;
             var ht = t - aa + 1;
 
             var b = 'display:block;'+'left:'+hl+'px'+';'+'top:'+ht+'px';
             $('div[name=hright]').attr('style',b);
 
         },function(){
+            dvs.remove();
+            ul1.empty();
             $('div[name=hright]').attr('style','display:none');
         });
-
-
-    </script>
-    
-
+    </script>   
 @endsection

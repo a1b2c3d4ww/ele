@@ -9,6 +9,7 @@ use App\AdminMerchant;
 
 use App\AdminAdver;
 
+
 use DB;
 use json;
 class FirstController extends Controller
@@ -16,6 +17,7 @@ class FirstController extends Controller
    public function index()
    {
    	 $data  = AdminCate::get();
+
 
    	 $data = getlevelcates($data);
 
@@ -29,6 +31,7 @@ class FirstController extends Controller
                               'adver'=>$adver,
                               'count'=>$count
                             ]);
+
 
 
    }

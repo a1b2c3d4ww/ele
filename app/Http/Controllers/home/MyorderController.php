@@ -20,7 +20,9 @@ class MyorderController extends Controller
 	  
 
 
+
 		return view('home.myorder',['res'=>$res,'order'=>$order]); 
+
 
 	
 	}
@@ -30,6 +32,7 @@ class MyorderController extends Controller
 		
 		return view('home.shopdetail');
 	}
+
 
 
 	// 订单详情
@@ -56,6 +59,7 @@ class MyorderController extends Controller
 	{
 		return view('home.addr');
 	}
+
 
 	// 我的收藏
 	public function collect()

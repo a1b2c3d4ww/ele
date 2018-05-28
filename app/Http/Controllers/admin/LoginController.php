@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\AdminUser;
 
+
 use Hash;
+
 
 class LoginController extends Controller
 {
@@ -17,6 +19,7 @@ class LoginController extends Controller
     }
     public function dologin(Request $req)
     {
+
 
 
     	 $res = $req->input('aname');
@@ -33,6 +36,7 @@ class LoginController extends Controller
             return back()->with('err','账号或密码错误');
          }else{
             return redirect('admin/member');
+
 
          } 
 

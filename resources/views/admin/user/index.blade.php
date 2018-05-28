@@ -5,6 +5,7 @@
 
 @section('content')
 
+
  @if(session('msg'))
     <div class="mws-form-message error">
         <ul>
@@ -14,6 +15,7 @@
     </div>
 
     @endif
+
 
 <div class="container">
     
@@ -161,7 +163,9 @@
                 </table>
                 
 
+
                 <div class="dataTables_info" id="DataTables_Table_1_info">共{{$count}}条</div>
+
 
                 
                 <style>

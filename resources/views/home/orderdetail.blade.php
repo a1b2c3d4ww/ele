@@ -2,6 +2,7 @@
 
 @section('title','饿了么-订单详情')
 
+
 @section('content')
 <div style="width:100%;height:10px"></div>
     <div class="ng-scope">
@@ -226,4 +227,5 @@
         </div>
     </div>
 </div>
+
 @endsection
