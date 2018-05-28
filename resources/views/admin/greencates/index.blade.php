@@ -94,14 +94,14 @@
                         </td>
                       
                         <td align="center" class=" ">
-                   
+                                 @if(Session::get('adminUser')->auth=='1')
                              <span class="btn-group">  
                                 <a href="/admin/green/{{$v->mid}}/{{$v->fid}}" class="btn btn-small"><i class="icon-indent-left"></i></a>                      
                                 <a href="/admin/greencate/edit/{{$v->fid}}" class="btn btn-small"><i class="icon-pencil"></i></a>
                                 <a href="/admin/greencate/delete/{{$v->fid}}" class="btn btn-small"><i class="icon-trash" onclick="return confirm('你确定要删除吗?')"></i></a>
                          
                              </span>
-                                
+                                @endif
                         </td>
                     </tr>
                    @endforeach

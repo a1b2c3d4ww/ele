@@ -109,11 +109,14 @@
                             普通管理员
                             @endif
                         </td>
+                           
                         <td class=" ">
-                   
+                             @if(Session::get('adminUser')->auth=='1')
 	                     	 <span class="btn-group">	                     
 
-	                            <a href="/admin/admins/user/{{$v->aid}}/edit" class="btn btn-small"><i class="icon-pencil"></i></a>
+
+	                            <a href="/admin/user/{{$v->aid}}/edit" class="btn btn-small"><i class="icon-pencil"></i></a>
+
 
                                 
                             <form action="/admin/user/{{$v->aid}}" method="post" style='display:inline'>
@@ -122,8 +125,9 @@
 	                            <button class="btn btn-small" onclick="return confirm('你确定要删除吗?')"><i class="icon-trash"></i></button>
                                 </form>
 	                         </span>
-                                
+                            @endif
                         </td>
+                         
                     </tr>
                    @endforeach
                     </tbody></table><div class="dataTables_info" id="DataTables_Table_1_info">当前{{$num}}条,共{{$count}}条</div>

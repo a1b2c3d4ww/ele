@@ -144,7 +144,7 @@
                            
                         </td>
                         <td align="center" class=" ">
-                   
+                         @if(Session::get('adminUser')->auth=='1')
                              <span class="btn-group">  
                              @if(!$v->status=='0') 
                               <a href="/admin/merchantdown/{{$v->mid}}" class="btn btn-small"><i class="icon-hand-down"></i></a> 
@@ -161,7 +161,7 @@
                                 <button class="btn btn-small" onclick="return confirm('你确定要删除吗?')"><i class="icon-trash"></i></button>
                                 </form>
                              </span>
-                                
+                               @endif 
                         </td>
                     </tr>
                   @endforeach

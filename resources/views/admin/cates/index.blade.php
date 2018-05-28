@@ -100,7 +100,7 @@
                             {{$v->path}}
                         </td>
                         <td align="center" class=" ">
-                   
+                             @if(Session::get('adminUser')->auth=='1')
                              <span class="btn-group">                        
                                 <a href="/admin/cate/{{$v->cid}}/edit" class="btn btn-small"><i class="icon-pencil"></i></a>
                                 
@@ -110,7 +110,7 @@
                                 <button class="btn btn-small" onclick="return confirm('你确定要删除吗?')"><i class="icon-trash"></i></button>
                                 </form>
                              </span>
-                                
+                                @endif
                         </td>
                     </tr>
                    @endforeach

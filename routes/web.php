@@ -47,11 +47,15 @@ Route::group([],function(){
 	Route::get('/home/myself','home\MyselfController@myself');//个人中心
 	Route::get('/home/orderdetails/{id1}/{id2}','home\MyselfController@orderdetails');//订单详情
 	Route::get('/home/myinfo','home\MyselfController@myinfo');//个人资料
+	Route::get('/home/dmyinfo/{id}','home\MyselfController@dmyinfo');//个人资料
+	Route::post('/home/myinfopic','home\MyselfController@myinfopic');//个人资料
+	Route::get('/home/myreview','home\MyselfController@myreview');//评价
+
 	Route::get('/home/addr','home\MyorderController@addr');//地址管理
 	Route::get('/home/enshrine','home\MyselfController@enshrine');//我的收藏
 	Route::get('/home/enshrine/del/{id}','home\MyselfController@enshrinedel');//删除收藏
 	Route::get('/home/mycarts','home\MyselfController@mycarts');//我的购物车
-	Route::get('/home/mycarts/del/{id}','home\MyselfController@mycartsdel');//我的购物车
+	Route::get('/home/mycarts/del/{id}','home\MyselfController@mycartsdel');//删除购物车
 	Route::get('/home/reviews/{id}','home\MyselfController@reviews');//评论
 
 	Route::resource('home/user','home\UserController');
@@ -107,11 +111,15 @@ Route::group([],function(){
 	Route::get('admin/down/{id}','admin\StatusController@adverdown');
 	Route::get('admin/linkup/{id}','admin\StatusController@linkup');
 	Route::get('admin/linkdown/{id}','admin\StatusController@linkdown');
+	Route::get('admin/orderdown/{id}','admin\StatusController@orderdown');
+	Route::get('home/homedown/{id}','admin\StatusController@homedown');
+	Route::get('home/homeorder/{id}','admin\StatusController@homeorder');
 	
 });
  
      Route::post('admin/dologin','admin\LoginController@dologin');
 	Route::get('admin/login','admin\LoginController@login');
+	Route::get('admin/loginout','admin\LoginController@loginout');
 
 
 

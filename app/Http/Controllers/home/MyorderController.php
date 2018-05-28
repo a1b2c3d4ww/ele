@@ -16,11 +16,11 @@ class MyorderController extends Controller
 		 $id = Session::get('homeUser.uid');
 
 	    $res = AdminMember::where('uid',$id)->first();
-	    $order = AdminOrders::where('uid',$id)->get();
-	  
-
+	    $order = AdminOrders::where('uid',$id)->orderBy('otime','desc')->get();
+		// dd($order);
 
 		return view('home.myorder',['res'=>$res,'order'=>$order]); 
+
 
 	
 	}
@@ -30,6 +30,7 @@ class MyorderController extends Controller
 		
 		return view('home.shopdetail');
 	}
+
 
 
 	// 订单详情
@@ -56,6 +57,7 @@ class MyorderController extends Controller
 	{
 		return view('home.addr');
 	}
+
 
 	// 我的收藏
 	public function collect()

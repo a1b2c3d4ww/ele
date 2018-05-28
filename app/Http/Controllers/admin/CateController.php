@@ -69,6 +69,7 @@ class CateController extends Controller
      */
     public function store(RequestForm $req)
     {
+        // dd('11');
         $res = $req->except('_token');
         if($res['pid']=='0'){
             $res['path'] = '0,';

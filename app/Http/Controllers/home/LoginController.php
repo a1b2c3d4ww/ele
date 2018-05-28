@@ -13,6 +13,7 @@ use Session;
 class LoginController extends Controller
 {
 
+
     // 登录
     public function login()
     {
@@ -20,6 +21,7 @@ class LoginController extends Controller
     }
 
 	  // 验证码
+
 
     public function captcha()
     {

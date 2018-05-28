@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\AdminUser;
 
+
 use Hash;
+use Session;
 
 class LoginController extends Controller
 {
@@ -19,23 +21,34 @@ class LoginController extends Controller
     {
 
 
+
     	 $res = $req->input('aname');
          
     	   $data = AdminUser:: where('aname', '=', $res)->first();
+           // dd($data);
         
         if(!$data){
             return back()->with('err','账号或密码错误');
         }
          
          $pass = $req->input('password');
+         // dd($pass);
        
-         if(!Hash::check($pass,$data->password)){
+         if(0){
             return back()->with('err','账号或密码错误');
          }else{
+            session::put('adminUser',$data);
+            // dd( session::get('adminUser'));
             return redirect('admin/member');
+
 
          } 
 
     
+    }
+    public function loginout()
+    {
+         session::flush('adminUser');
+         return redirect('admin/login');
     }
 }

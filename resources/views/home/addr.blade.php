@@ -3,12 +3,14 @@
 @section('title','地址管理')
 
 
+
 @section('content')
 <div style="width:100%;height:10px"></div>
     <div class="ng-scope">
     <div class="profile-container container">
         @include('layout.list')
 <div class="profile-panel" role="main">
+
 
     <h3 ng-if="pageTitleVisible" class="profile-paneltitle ng-scope">
         <span ng-bind="pageTitle" class="ng-binding">
@@ -126,10 +128,12 @@
                         姓名
                     </label>
                     <input placeholder="请输入您的姓名" name="uname">
+
                     <div class="addressformfield-hint">
                         <span>
                         </span>
                     </div>
+
                 </div>
                 <div class="addressformfield sexfield">
                     <label>

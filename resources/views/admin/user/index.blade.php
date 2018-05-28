@@ -5,6 +5,7 @@
 
 @section('content')
 
+
  @if(session('msg'))
     <div class="mws-form-message error">
         <ul>
@@ -14,6 +15,7 @@
     </div>
 
     @endif
+
 
 <div class="container">
     
@@ -136,6 +138,7 @@
                             </td>
                              
                             <td class=" ">
+                                 @if(Session::get('adminUser')->auth=='1')
                        <span class="btn-group">
                                             
                                             <a href="/admin/member/{{$v->uid}}/edit" class="btn btn-small"><i class="icon-pencil"></i></a>
@@ -149,7 +152,7 @@
 
                         </form>
                                         </span>
-
+                        @endif
                     </td>
                             
                               
@@ -161,7 +164,9 @@
                 </table>
                 
 
+
                 <div class="dataTables_info" id="DataTables_Table_1_info">共{{$count}}条</div>
+
 
                 
                 <style>

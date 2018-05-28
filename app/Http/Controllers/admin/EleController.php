@@ -11,7 +11,9 @@ use App\AdminUser;
 use App\AdminReviews;
 use App\AdminOrders;
 
+
 use Hash;
+
 
 
 class EleController extends Controller
@@ -69,8 +71,9 @@ class EleController extends Controller
     public function store(StoreBlogPost $req)
     {
 
+
         $res = $req->except('_token','repass');
-        // dd($req->all());
+        // dd($req->file('upic'));
         if($req->hasFile('upic'))
         {
             //文件名
@@ -81,11 +84,13 @@ class EleController extends Controller
             $path = $req->file('upic')->move('./upload/',$name.'.'.$suffix);
 
 
+
         // dd($res);
         //存到数据表中
         $res['upic'] = '/upload/'.$name.'.'.$suffix;
         //对密码加密
-        $res['password'] = Hash::make($req->input('password'));
+
+        $res['password'] =  Hash::make($req->input('password'));
 
         $res['ctime'] = time();
         }
@@ -150,6 +155,7 @@ class EleController extends Controller
     public function update(FormUpdate $req, $id)
     {
         //表单验证
+
         $data = AdminMember::where('uid',$id)->first();
         $res =  $req->except('_token','_method');
         if($req->upic){
@@ -158,7 +164,7 @@ class EleController extends Controller
             $path = $req->file('upic')->move('./upload', $name.'.'.$suffix);
             $res['upic'] = '/upload/'.$name.'.'.$suffix;
           
-            if(!file_exists('.'.$data->upic)){
+            if(file_exists('.'.$data->upic)){
             unlink('.'.$data->upic);
              }
         }

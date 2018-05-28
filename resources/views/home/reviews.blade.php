@@ -68,11 +68,13 @@
                     <div class="shopguide-info">
                         <meta itemprop="url" content="https://www.ele.me/shop/1315079">
                         <img ng-src="//fuss10.elemecdn.com/9/58/642bb5ea828b2fe054bc425ce2050png.png?imageMogr2/thumbnail/95x95/format/webp/quality/85"
-                        alt="沿海405烤场" itemprop="image" src="/home/shangjia_images/kfc.jpeg">
+
+                        alt=" {{$merchant->mpic}}" itemprop="image" src="{{$merchant->mpic}}">
                         <div class="shopguide-info-wrapper">
                             <div>
                                 <h1 title="沿海405烤场" ng-class="{hastip: shop.tip}" itemprop="name" class="ng-binding">
-                                    沿海405烤场
+                                    {{$merchant->mname}}
+
                                 </h1>
                                 <!-- ngIf: shop.tip -->
                                 <a ng-href="/shop/1315079/info" href="https://www.ele.me/shop/1315079/info">
@@ -86,11 +88,13 @@
                                     style="width: 100%;">
                                     </span>
                                 </div>
-                                (
+
+                               
                                 <a ng-href="/shop/1315079/rate" class="ng-binding" href="https://www.ele.me/shop/1315079/rate">
-                                    742
+                                   
                                 </a>
-                                )
+                             
+
                             </p>
                             <p>
                                 <!-- ngRepeat: flavor in shop.flavor -->
@@ -177,7 +181,9 @@
                                     <p class="shopguide-extra-delivery">
                                         由
                                         <span class="ng-binding">
-                                            沿海405烤场
+
+                                              {{$merchant->mname}}
+
                                         </span>
                                         提供配送服务
                                     </p>
@@ -199,7 +205,9 @@
                                 配送费
                             </em>
                             <em class="shopguide-server-value ng-binding">
-                                夜间配送费¥7.5
+
+                                夜间配送费¥6
+
                             </em>
                             <!-- ngIf: shop.delivery_mode.description -->
                         </span>
@@ -254,7 +262,9 @@
                             <!-- ngRepeat: item in ratingTypeList -->
                             <a class="commentfilter-item ng-binding ng-scope active" ng-repeat="item in ratingTypeList"
                             ng-class="{active: filter.type === item.record_type}" ng-click="select(item.record_type)">
-                                全部(271)
+
+                                全部
+
                             </a>
                            
                             <!-- end ngRepeat: item in ratingTypeList -->
@@ -404,7 +414,9 @@
                                     配送说明：
                                 </h4>
                                 <p class="ng-binding">
-                                    配送费¥7.5
+
+                                    配送费¥6
+
                                 </p>
                             </div>
                             <ul class="shopbulletin-supports">

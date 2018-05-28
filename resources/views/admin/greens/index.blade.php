@@ -136,7 +136,7 @@
                            
                         </td>
                         <td align="center" class=" ">
-                   
+                    @if(Session::get('adminUser')->auth=='1')
                              <span class="btn-group">   
                                @if($v->status=='0') 
                               <a href="/admin/greenup/{{$v->gid}}" class="btn btn-small"><i class="icon-hand-up"></i></a>    
@@ -147,7 +147,7 @@
                                 <a href="/admin/green/delete/{{$v->gid}}" class="btn btn-small"><i class="icon-trash" onclick="return confirm('你确定要删除吗?')"></i></a>
                          
                              </span>
-                                
+                            @endif    
                         </td>
                     </tr>
                    @endforeach

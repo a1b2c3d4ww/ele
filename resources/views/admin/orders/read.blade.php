@@ -75,7 +75,9 @@
                                     
                           <td class=" ">
                                {{$v->did}}
+
                             </td>
+
                             <td class=" ">
                               <img src="{{$v->gpic}}" alt="" width='100px'>
                             </td>

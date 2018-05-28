@@ -2,9 +2,12 @@
 
 @section('title','我的购物车')
 
-@section('list')
+@section('content')
 
-
+<div style="width:100%;height:10px"></div>
+    <div class="ng-scope">
+    <div class="profile-container container">
+        @include('layout.list')
         <div class="profile-panel" role="main">
             <!-- ngIf: pageTitleVisible -->
             <h3 ng-if="pageTitleVisible" class="profile-paneltitle ng-scope">
@@ -79,14 +82,7 @@
                 <a onclick="return confirm('你确定要删除吗?')" class="ordertimeline - handle - detail " ng-href="order / id / 1219646428822216768 "
                 href="/home/mycarts/del/{{$k}}">
                     删除
-                </a>
-                <!-- ngIf: item.realStatus===1 -->
-                <!-- ngIf: item.realStatus===2 -->
-                <!-- ngIf: item.realStatus===3 -->
-                <!-- ngIf: item.realStatus===4 -->
-                <!-- ngIf: item.realStatus===5 -->
-                <!-- end ngIf: item.realStatus===5 -->
-                <!-- ngIf: item.realStatus===6 -->
+                </a>           
             </td>
 
         </tr>
@@ -113,8 +109,11 @@
         @endif
         <!-- end ngRepeat: item in orderList -->
     </tbody>
-
-</table>
+    
+    </table>
+    </div>
+    </div>
+    </div>
 @endsection
 
 

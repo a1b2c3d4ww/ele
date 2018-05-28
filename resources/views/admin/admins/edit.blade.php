@@ -53,6 +53,7 @@
                         <input type="text" name='tel' class="small" value="{{$res->tel}}">
                     </div>
                 </div>
+                @if(Session::get('adminUser')->auth=='1')
                 <div class="mws-form-row">
                     <label class="mws-form-label">权限</label>
                     <div class="mws-form-item">
@@ -62,6 +63,7 @@
                                         </select>
                                     </div>
                 </div>
+                @endif
             </div>
             <div class="mws-button-row">
                 {{method_field('PUT')}}

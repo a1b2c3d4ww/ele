@@ -23,7 +23,10 @@ class OrdersController extends Controller
             $condition[] = ['oid','like','%'.$req->input('search').'%'];
         }
 
-        $res = AdminOrders::where($condition)->orderBy('uid','asc')-> paginate($req->input('num',10));    
+         $data = AdminOrders::get();
+        $res = AdminOrders:: where($condition)->orderBy('otime','desc')->paginate($req->input('num',10));   
+          // dd($res) ;
+
         $count =  count(AdminOrders::all());
         
         $num = $req->input('num');
@@ -117,10 +120,12 @@ class OrdersController extends Controller
     public function destroy($id)
     {
         //
-         $req = AdminOrders::where('oid',$id)->first();
+
+         $req = AdminOrders::where('uid',$id)->first();
 
          try{
-          AdminOrders::where('oid',$id)->delete();
+          AdminOrders::where('uid',$id)->delete();
+
         }catch(\Exception $e){
            return back()->with('msg','添加失败');
         }

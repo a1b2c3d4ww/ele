@@ -119,6 +119,7 @@
                             </td>       
                         
                                 <td class=" ">
+                                     @if(Session::get('adminUser')->auth=='1')
                        <span class="btn-group">
                                           
                                         
@@ -131,7 +132,7 @@
 
                         </form>
                                         </span>
-
+                        @endif
                     </td>
 
                         </tr>

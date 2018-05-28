@@ -2,7 +2,9 @@
 
 @section('title','饿了么-支付成功')
 
+
 <meta http-equiv="refresh" content="3;url=/">
+
 
 @section('payend')
 <div ng-switch="state.type" state="layoutState" class="ng-isolate-scope"></div>
@@ -105,6 +107,7 @@
                 送货至：
                 <em class="ng-binding">
 
+
                     {{$user['uname']}}(先生)
                 </em>
                 <em class="ng-binding">
@@ -113,19 +116,15 @@
                 <em class="pay-header-address ng-binding">
                    {{$user['addr']}}
 
+
                 </em>
             </span>
             <div class="ordersuccess-tip">
-                <p>
-                    享受完美食后评价订单还能获得金币哦~ 查看
-                    <a href="/home/myself">
-                        我的金币
-                    </a>
-                </p>
+              
                 <p>
                     预测送餐时间为
                     <em class="color-stress ng-binding" ng-bind="leadTime | date:&#39;HH:mm&#39;">
-                        15:32
+                       30分钟内
                     </em>
                     ，请保持手机畅通
                 </p>

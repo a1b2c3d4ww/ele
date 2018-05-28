@@ -30,13 +30,13 @@
                 </a>
                 <div class="toolbar-separator">
                 </div>
-                <a class="toolbar-cartbtn icon-cart toolbar-open" id="gouwu" href="JavaScript:" >
+                <a class="toolbar-cartbtn icon-cart toolbar-open" id="gouwu" href="/home/mycarts" >
                     购物车
                     <!-- ngIf: foodCount.count -->
                 </a>
 
                 <div class="toolbar-separator"></div>
-                <a class="toolbar-btn icon-line-profile toolbar-open modal-hide" id="info" href="JavaScript:">
+                <a class="toolbar-btn icon-line-profile toolbar-open modal-hide" id="info" href="/home/myinfo">
                     <!-- ngIf: messageCount.count -->
                 </a>
 

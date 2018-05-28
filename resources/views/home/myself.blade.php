@@ -3,11 +3,13 @@
 @section('title','个人中心')
 
 
+
 @section('content')
     <div style="width:100%;height:10px"></div>
     <div class="ng-scope">
     <div class="profile-container container">
         @include('layout.list')
+
 
         <div class="profile-panel" role="main">
             <!-- ngIf: pageTitleVisible -->
@@ -34,6 +36,7 @@
                                 订餐了吗？提前订餐送的快！
                             </p>
                         </div>
+                        
                     </div>
                     <div class="profile-infoitem">
                        
@@ -48,115 +51,7 @@
    
 
 
-<table class="order-list ng-scope" ng - show="orderList.length">
-    <thead>
-        <tr>
-            <th class="order-list-infoth">
-                订单内容
-            </th>
-            <th>
-            </th>
-            <th>
-                支付金额（元）
-            </th>
-            <th>
-                状态
-            </th>
-            <th>
-                操作
-            </th>
-        </tr>
-    </thead>
 
-    <tbody>
-        <tr>
-        </tr>
-
-    
-
-        @foreach($order as $k=>$v)
-        <!-- ngRepeat: item in orderList -->
-<tr class="timeline" order-timeline="" ng-repeat="item in orderList">
-            <td class="ordertimeline-avatar">
-                <a ng - href="/shop/" href="/shop/">
-                    <img ng - src="{{getmid($v->mid)->mpic}}"
-                    src="//fuss10.elemecdn.com/6/ac/0b7d43f3822f8c64c9711fd336a77jpeg.jpeg?imageMogr2/thumbnail/140x140/format/webp/quality/85">
-                </a>
-            </td>
-            <td class="ordertimeline-info">
-                <h3 class="ordertimeline-title">
-                    <a ng - href="/shop/" ng - bind="item.restaurant.name" class="ng-binding"
-                    href="/shop/">
-                    </a>
-                    <!-- ngIf: item.is_book -->
-                </h3>
-                <p class="ordertimeline-info-food">
-                    <a ng - href="order/id/1219646428822216768" href="order/id/1219646428822216768">
-                        @foreach(getdetails($v->oid) as $kk=>$vv)
-                        <span class="ordertimeline-food ng-binding" ng - bind="item.product">
-                         {{$vv->gname}}
-                        </span>
-                        @endforeach
-                   
-                        <span class="ordertimeline-info-productnum ng-binding" ng-bind="item.productnum">
-                         {{$kk+1}}
-                        </span>
-                        <span>
-                            个菜品
-                        </span>
-                       
-                    </a>
-                </p>
-                <p>
-                    订单号:
-                    <a ng-href="order/id / 1219646428822216768 " ng-bind="item.unique_id "
-                    class="ng - binding " href="order / id / 1219646428822216768 ">
-                       {{$v->oid}}
-                    </a>
-                </p>
-            </td>
-            <td class="ordertimeline - amount ">
-                <h3 class="ordertimeline - title ordertimeline - price ui - arial ng - binding "
-                ng-bind="item.total_amount.toFixed(2)">
-                    {{$v->sum}}
-                </h3>
-            </td>
-            <td class="ordertimeline - status ">
-                <h3 ng-bind="item.statusText " ng-class=" {
-                'waitpay': (item.realStatus === 1),
-                'end': (item.realStatus === 5)
-                }
-                " class="ng - binding end ">
-                                        @if($v->status == 1)
-                                          新订单
-                                        @elseif($v->status == 2)
-                                           已发货
-                                        @elseif($v->status == 3)
-                                        已收货
-                                        @else($v->status == 4)
-                                        无效订单
-                                        @endif
-                </h3>
-                <!-- ngIf: statusText -->
-            </td>
-            <td class="ordertimeline - handle ">
-                <a class="ordertimeline - handle - detail " ng-href="order / id / 1219646428822216768 "
-                href="orderdetails/{{$v->oid}}/{{$v->mid}}">
-                    订单详情
-                </a>
-                <!-- ngIf: item.realStatus===1 -->
-                <!-- ngIf: item.realStatus===2 -->
-                <!-- ngIf: item.realStatus===3 -->
-                <!-- ngIf: item.realStatus===4 -->
-                <!-- ngIf: item.realStatus===5 -->
-                <!-- end ngIf: item.realStatus===5 -->
-                <!-- ngIf: item.realStatus===6 -->
-            </td>
-        </tr>
-        @endforeach
-        <!-- end ngRepeat: item in orderList -->
-    </tbody>
-</table>
 
          
                 <div class="profile-footprint ng-scope">
@@ -165,7 +60,9 @@
                             美食足迹
                         </a>
 
+
                         <a class="tabnavigation-navitem" href="/home/enshrine">
+
 
                             我的收藏
                         </a>
@@ -178,6 +75,7 @@
                             </span>
                         </div>
                     </div>
+
 
                     @if(Session::get('mid'))
                     @foreach(Session::get('mid') as $k=>$v)
@@ -197,12 +95,31 @@
                                 <div class="rstblock-title ng-binding" ng-bind="restaurant.name">
                                     {{getmid($v)->mname}}
 
+
                                 </div>
                                 <div class="starrating icon-star">
-                                    <span class="icon-star" style="width: 98%;">
+                                      @if(getmid($v)->level==0)
+                                        <span class="icon-star" style="width:0%;;">
+                                        @endif
+                                      @if(getmid($v)->level==1)
+                                        <span class="icon-star" style="width:20%;;">
+                                        @endif
+                                         @if(getmid($v)->level==2)
+                                        <span class="icon-star" style="width:40%;;">
+                                        @endif
+                                         @if(getmid($v)->level==3)
+                                        <span class="icon-star" style="width:60%;;">
+                                        @endif
+                                         @if(getmid($v)->level==4)
+                                        <span class="icon-star" style="width:80%;;">
+                                        @endif
+                                         @if(getmid($v)->level==5)
+                                        <span class="icon-star" style="width:100%;;">
+                                        @endif
                                     </span>
                                 </div>
                                 <div class="rstblock-cost ng-binding">
+
 
                                     配送费¥6
                                 </div>
@@ -223,6 +140,7 @@
                                     @endif
 
 
+
                                 </div>
 
                             </div>
@@ -230,8 +148,10 @@
 
                     </div>
 
+
                     @endforeach
                     @endif
+
 
                 </div>
             </div>

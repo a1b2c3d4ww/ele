@@ -14,11 +14,13 @@ class RegisterController extends Controller
 {
 
 
+
     // 注册
     public function reg()
     {
         return view('home.reg');
     }
+
 
 
     public function yzm()

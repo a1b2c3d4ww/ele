@@ -4,7 +4,6 @@
 @section('title','饿了么-网上订餐')
 
 @section('content')
-
     
     <style>
         #all{position:relative;
@@ -50,31 +49,25 @@
     </div>
     <div style="width:1200px;height:5px"></div>
     <div class="container ng-scope" style="top:500px;">
-
         <div class="excavator container">
             <!-- ngIf: rstCategories.length -->
             <div class="excavator-filter ng-scope" ng-if="rstCategories.length">
                 <span class="excavator-filter-name">
                     商家分类:
                 </span>
-
                  <li class="excavator-filter-item ng-binding ng-scope active list" value="0" style="cursor:pointer;font-size:15px;color:#666;">
-
                     全部商家
                 </li>
                 @foreach($data as $k=>$v)
                 <!-- ngRepeat: category in rstCategories -->
-
                 <li class="excavator-filter-item ng-binding ng-scope  parent list" style="cursor:pointer;font-size:15px;color:#666;line-height:30px"  value="{{$v['cid']}}">{{$v['cname']}}</li>
-
                   
                 @endforeach
                 
                   <br><br>
-                   <div ng-show="subCategories" class="excavator-filter-subbox ng-hide" id="child">
+                   <div ng-show="subCategories" class="excavator-filter-subbox ng-hide " id="child">
                   
                      </div>
-
                 <script>
                     var m = 1;
                     var into = null;
@@ -119,34 +112,51 @@
                 </script>
                
             </div>
-
         </div>
 
         <div class="place-rstbox clearfix">
             <div class="place-rstbox clearfix">
            
-
     <div class="clearfix liebiaos" style="height:500px;">
     @foreach($merchants as $k=>$v)  
-        <a href="/home/merchant/index/{{$v->mid}}" target="_blank"
-
+        @if($v->status=='0')
+        <a href="#" target=""
+        class="rstblock-closed rstblock">
+        @else
+          <a href="/home/merchant/index/{{$v->mid}}" target="_blank"
         class="rstblock">
+        @endif
             <div class="rstblock-logo">
                 <img src="{{$v->mpic}}"
-                width="70" height="70" alt="必胜客（回龙观店）" class="rstblock-logo-icon">
+                width="70" height="70" alt="" class="rstblock-logo-icon">
             </div>
             <div class="rstblock-content">
                 <div class="rstblock-title">
                     {{$v->mname}}
                 </div>
                 <div class="starrating icon-star">
-                    <span class="icon-star" style="width:96%;">
+                    @if($v->level==0)
+                    <span class="icon-star" style="width:0%;">
+                    @endif
+                    @if($v->level==1)
+                    <span class="icon-star" style="width:20%;">
+                    @endif
+                    @if($v->level==2)
+                    <span class="icon-star" style="width:40%;;">
+                    @endif
+                     @if($v->level==3)
+                    <span class="icon-star" style="width:60%;">
+                    @endif
+                     @if($v->level==4)
+                    <span class="icon-star" style="width:80%;">
+                    @endif
+                     @if($v->level==5)
+                    <span class="icon-star" style="width:100%;">
+                    @endif
                     </span>
                 </div>
                 <div class="rstblock-cost">
-
                     配送费¥6
-
                 </div>
                <div class="rstblock-activity">
                     @if($v->status==1)
@@ -159,6 +169,9 @@
                     <i style="background:#fff;color:#999999;border:1px solid;padding:0;">票</i>
                     @endif
                 </div>
+                 @if($v->status=='0')
+                <div class="rstblock-relaxing">商家休息,暂不接单</div>
+                @endif
             </div>
         </a>
             @endforeach
@@ -167,12 +180,9 @@
 
 <div class="clearfix liebiao" style="height: 840px;">
             
-
         </div>
     </div>
 </div>
-
-
 
 
 @endsection
@@ -182,10 +192,8 @@
 
     <script >
         // console.log($('.parent'));
-
-        var g ;
-       
-
+        var g ;    
+         var list;
         $('.parent').each(function(){
             $(this).click(function(){
                     $('.liebiaos').hide();
@@ -201,44 +209,41 @@
                       $('#child').text('');
                 $('#child').removeClass('ng-hide');
                 var sub = g.sub;
+                // console.log(sub);
                 for (var i in sub) {
                     // console.log(sub[i].cname);
-                    var lis = $('<li class="excavator-filter-item ng-binding ng-scope active" value="" style="cursor:pointer;"></li>');
+                    var lis = $('<li class="excavator-filter-item ng-binding ng-scope active childlist" value="" style="cursor:pointer;"></li>');
                     
                     $('#child').append(lis.text(sub[i].cname));
+                    $('#child').append(lis.val(sub[i].cid));
 
                 }
-                },
-                error:function(){
 
-                    console.log('发送失败');
-                },
-                timeout:1000,      
-                async: true
-
-            })
-              
-
-            })
-
-        })
-       var list;
-        $('.list').each(function(){
+                 $('.childlist').each(function(){
+            // console.log($(this));
             $(this).click(function(){
                 l = $(this).val();
-                console.log(l);
+                // console.log('111');
                       $.ajax({
                 url:'/home/listajax/'+l,
-                data:'json',
                 type:'GET',
                 success:function(data){
-                      console.log(data);
+                      // console.log(data);
                     for (var i = 0; i < data.length; i++) {
                         
                        
                         list = $('.liebiao');
-                        var a = $('<a href="" class="rstblock" name="right"></a>');
-                        a.attr('href','/home/merchant/index/'+data[i].mid);
+                        if(data[i].status==0){
+                              var a = $('<a href="#" class="rstblock-closed rstblock" name="right"></a>');
+                              var div7 = $('<div class="rstblock-relaxing">商家休息,暂不接单</div>');
+
+                        }else{
+                               var a = $('<a href="#" class="rstblock" name="right"></a>');
+                              a.attr('href','/home/merchant/index/'+data[i].mid);
+
+                        }
+                      
+
                         var div1 =$(' <div class="rstblock-logo"></div>');
                         var img = $('<img src="" width="70" height="70"  class="rstblock-logo-icon">');
                         img.attr('src',data[i].mpic);
@@ -258,6 +263,10 @@
                         div2.append(div4);
                         div2.append(div5);
                         div2.append(div6);
+                        if(data[i].status==0){
+                             div2.append(div7);
+                        }
+                       
                         if(data[i].status==1){
                             div6.append(`<i style="background:#E75959;">
                                     新
@@ -288,13 +297,108 @@
                 async: true
 
             })
-                  $('.liebiao').text('');    
+                 $('.liebiao').text('');    
             })
            
+         })  
+                },
+                error:function(){
 
-         })
-        
-    </script>
+                    console.log('发送失败');
+                },
+                timeout:1000,      
+                async: true
+
+            })
+
+            })
+
+        })
+      
+         $('.list').each(function(){
+            // console.log($(this));
+            $(this).click(function(){
+                l = $(this).val();
+                // console.log('111');
+                      $.ajax({
+                url:'/home/listajax/'+l,
+                type:'GET',
+                success:function(data){
+                      // console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        
+                       
+                        list = $('.liebiao');
+                        if(data[i].status==0){
+                              var a = $('<a href="#" class="rstblock-closed rstblock" name="right"></a>');
+                              var div7 = $('<div class="rstblock-relaxing">商家休息,暂不接单</div>');
+
+                        }else{
+                               var a = $('<a href="#" class="rstblock" name="right"></a>');
+                              a.attr('href','/home/merchant/index/'+data[i].mid);
+
+                        }
+                      
+
+                        var div1 =$(' <div class="rstblock-logo"></div>');
+                        var img = $('<img src="" width="70" height="70"  class="rstblock-logo-icon">');
+                        img.attr('src',data[i].mpic);
+                        var div2 = $('<div class="rstblock-content"></div>');
+                        var div3 = $('<div class="rstblock-title"></div>');
+                        var div4 = $(`<div class="starrating icon-star"><span class="icon-star" style="width:82%;">
+                                </span>
+                            </div>`);
+                        var div5 = $('<div class="rstblock-cost">配送费¥6</div>');
+                        var div6 = $(` <div class="rstblock-activity">
+                               
+                               
+                                
+                            </div>`);
+                        div2.text(data[i].mname);
+                        div2.append(div3);
+                        div2.append(div4);
+                        div2.append(div5);
+                        div2.append(div6);
+                        if(data[i].status==0){
+                             div2.append(div7);
+                        }
+                       
+                        if(data[i].status==1){
+                            div6.append(`<i style="background:#E75959;">
+                                    新
+                                </i>`)
+                        }
+                        if(data[i].safe==1){
+                            div6.append(` <i style="background:#fff;color:#999999;border:1px solid;padding:0;">
+                                    保
+                                </i>`)
+                        }
+                        if(data[i].bill==1){
+                            div6.append(` <i style="background:#fff;color:#999999;border:1px solid;padding:0;">
+                                    票
+                                </i>`)
+                        }
+                        div1.append(img);
+                        a.append(div1);
+                        a.append(div2);
+                        list.append(a);
+                    }
+            
+                },
+                error:function(){
+
+                    console.log('发送失败');
+                },
+                timeout:1000,      
+                async: true
+
+            })
+                 $('.liebiao').text('');    
+            })
+           
+         })  
+
+          </script>
 
     <script>
         
@@ -328,9 +432,6 @@
         },function(){
             $('div[name=hright]').attr('style','display:none');
         });
-
-
     </script>
-    
-
+   
 @endsection

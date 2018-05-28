@@ -73,27 +73,16 @@
             <div id="mws-user-info" class="mws-inset" style="padding: 0px;margin: 0px">
                         
                 <!-- Username and Functions -->
-               
                 <div id="mws-user-functions" style="padding: 0px;margin: 0px">
-                     @if(Session::get('adminUser'))
                     <div id="mws-username">
-                        Hello, {{session::get('adminUser')->aname}}
+                        Hello, lamp201
                     </div>
-
                     <ul>
                     	
-                        <li><a href="/admin/user/{{session::get('adminUser')->aid}}/edit">修改密码</a></li>
-                         <li><a href="/admin/loginout">退出</a></li>
+                        <li><a href="#">修改密码</a></li>
+                        <li><a href="index.html">退出</a></li>
                     </ul>
-                    @else
-                     <ul>
-                        
-                        <li><a href="/admin/login">您好,请登录</a></li>
-                       
-                    </ul>
-                     @endif
                 </div>
-              
             </div>
         </div>
     </div>
@@ -125,29 +114,41 @@
                     <li>
                         <a href="#"><i class="icon-users"></i>后台用户管理</a>
                         <ul class='closed'>
-                             @if(Session::get('adminUser')->auth=='1')
                             <li><a href="/admin/user/create">添加后台用户</a></li>
-                            @endif
                             <li><a href="/admin/user">后台用户列表</a></li>
                         </ul>
                     </li>      
                     <li>
                         <a href="#"><i class="icon-user"></i>用户管理</a>
                         <ul class='closed'>
-                              @if(Session::get('adminUser')->auth=='1')
                             <li><a href="/admin/member/create">添加用户</a></li>
-                             @endif
                             <li><a href="/admin/member">用户列表</a></li>
                         </ul>
                     </li>
-                   
-                 
-                   <li>
-                        <a href="#"><i class="icon-list"></i>商家分类管理</a>
+                     <li>
+                        <a href="#"><i class="icon-chevron-down"></i>链接管理</a>
                         <ul class='closed'>
-                                @if(Session::get('adminUser')->auth=='1')
+                            <li><a href="/admin/links/create">添加链接</a></li>
+                            <li><a href="/admin/links">链接列表</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#"><i class="icon-ok-sign"></i>轮播管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/adver/create">添加轮播</a></li>
+                            <li><a href="/admin/adver">轮播列表</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#"><i class="icon-ok-sign"></i>订单管理</a>
+                        <ul class='closed'>                        
+                            <li><a href="/admin/orders">订单列表</a></li>
+                        </ul>
+                    </li>          
+                   <li>
+                        <a href="#"><i class="icon-list"></i>分类管理</a>
+                        <ul class='closed'>
                             <li><a href="/admin/cate/create">添加分类</a></li>
-                            @endif
                             <li><a href="/admin/cate">分类列表</a></li>
                         </ul>
                     </li>
@@ -155,44 +156,13 @@
                     <li>
                         <a href="#"><i class="icon-github-2"></i>商家管理</a>
                         <ul class='closed'>
-                                @if(Session::get('adminUser')->auth=='1')
                             <li><a href="/admin/merchant/create">添加商家</a></li>
-                            @endif
                             <li><a href="/admin/merchant">商家列表</a></li>
                             <li><a href="/admin/greencate/index">菜品分类列表</a></li>
                             <li><a href="/admin/green/index">菜品列表</a></li>
                         </ul>
                     </li>  
-                        <li>
-                        <a href="#"><i class="icon-shopping-cart"></i>订单管理</a>
-                        <ul class='closed'>                        
-                            <li><a href="/admin/orders">订单列表</a></li>
-                        </ul>
-                    </li>       
-                      <li>
-                        <a href="#"><i class="icon-comments-2"></i>评论管理</a>
-                        <ul class='closed'>                        
-                            <li><a href="/admin/reviews">评论列表</a></li>
-                        </ul>
-                    </li>   
-                      <li>
-                        <a href="#"><i class="icon-magnet"></i>链接管理</a>
-                        <ul class='closed'>
-                                @if(Session::get('adminUser')->auth=='1')
-                            <li><a href="/admin/links/create">添加链接</a></li>
-                            @endif
-                            <li><a href="/admin/links">链接列表</a></li>
-                        </ul>
-                    </li>
-                     <li>
-                        <a href="#"><i class="icon-film"></i>轮播管理</a>
-                        <ul class='closed'>
-                                @if(Session::get('adminUser')->auth=='1')
-                            <li><a href="/admin/adver/create">添加轮播</a></li>
-                            @endif
-                            <li><a href="/admin/adver">轮播列表</a></li>
-                        </ul>
-                    </li>
+
                 </ul>
             </div>         
         </div>

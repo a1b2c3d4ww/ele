@@ -16,7 +16,9 @@ use App\AdminUser;
 use App\AdminReviews;
 use App\AdminOrders;
 
+use Session;
 use Hash;
+
 
 
 class UserController extends Controller
@@ -102,8 +104,10 @@ class UserController extends Controller
            $res = $req->except('_token','repass');
            $res['ctime'] = time();
 
+
            $res['password'] = Hash::make($req->input('password'));
             // Hash::make($req->input('password'));
+
            // dd($res);
            // $data = AdminUser::create($res);
            // dd($data);
@@ -147,7 +151,7 @@ class UserController extends Controller
     public function edit($id)
     {
 
-
+        
         $res = AdminUser::find($id);
         // dd($res);
         return view('admin/admins/edit',['res'=>$res]);
@@ -183,6 +187,15 @@ class UserController extends Controller
            
              // dd($data);
         }
+            $session = session::get('adminUser');
+
+            if($id == $session->aid){
+                $users = AdminUser::where('aid',$id)->first();
+
+                session::flush('adminUser');
+                session::put('adminUser',$users);
+            }
+          
             return redirect('/admin/user')->with('msg','修改成功');
             
 

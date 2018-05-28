@@ -113,6 +113,7 @@
                            </td>
                              
                             <td class=" ">
+                                 @if(Session::get('adminUser')->auth=='1')
                        <span class="btn-group">
                                              @if($v->status == 1)
                                              <a href="/admin/linkup/{{$v->yid}}" class="btn btn-small"><i class="icon-minus-sign"></i></a>
@@ -131,7 +132,7 @@
 
                         </form>
                                         </span>
-
+                        @endif
                     </td>
                             
                               
@@ -143,7 +144,9 @@
                 </table>
                 
 
+
                 <div class="dataTables_info" id="DataTables_Table_1_info">共{{$count}}条</div>
+
 
 <style>
                     .pagination li{

@@ -49,6 +49,7 @@
                 @foreach($order as $k=>$v)
                 <!-- ngRepeat: item in orderList -->
                 <tr class="timeline" order-timeline="" ng-repeat="item in orderList">
+                    
                     <td class="ordertimeline-time">
                         <p class="ng-binding">
                             {{date('Y-m-d H:i',$v->otime)}}
@@ -60,7 +61,7 @@
                     </td>
 
                     <td class="ordertimeline-avatar">
-                        <a ng - href="/shop/" href="/shop/">
+                        <a ng - href="/home/merchant/index/{{$v->mid}}" href="/shop/">
                             <img src="{{getmid($v->mid)->mpic}}">
                         </a>
                     </td>
@@ -101,22 +102,130 @@
                     </td>
                     <td class="ordertimeline - status ">
                         <h3 class="ng - binding end ">
-                            @if($v->status == 1) 新订单 @elseif($v->status == 2) 已发货 @elseif($v->status
-                            == 3) 已收货 @else($v->status == 4) 无效订单 @endif
+                           
+                                        @if($v->status == 1)
+                                           已下单
+                                        @elseif($v->status == 0)
+                                            无效订单
+                                        @elseif($v->status == 3)
+                                        <a href="/home/homedown/{{$v->oid}}">确认收货(配送中)</a>
+                                         @elseif($v->status == 4)
+                                            交易完成 
+                                        
+                                        @endif
                         </h3>
                         <!-- ngIf: statusText -->
                     </td>
                     <td class="ordertimeline - handle ">
                         <a class="ordertimeline - handle - detail " href="/home/orderdetails/{{$v->oid}}/{{$v->mid}}">
                             订单详情
-                        </a>
+                        </a><br><br>
+                        @if($v->status==4)
+                           <a class="ordertimeline - handle - detail " ng-href="order / id / 1219646428822216768 "
+                        href="/home/homeorder/{{$v->oid}}"}">
+                             <a href="javascript:" onclick="tan()">
+                                        订单评价
+                                    </a>
+                        </a><br><br>
+                        @endif
+                          @if($v->status != 0)
+                         <a class="ordertimeline - handle - detail " ng-href="order / id / 1219646428822216768 "
+                        href="/home/homeorder/{{$v->oid}}"}">
+                            取消订单</a>
+                            @endif
+                        
+                      
                     </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                    <td>
+<div class="addressdialog" id="haha"  style="display:none;">
+    <div class="addressdialog-close" id="off" onclick="down()">
     </div>
+    <div class="addressdialog-header">
+       您的评价
+    </div>
+    <div class="addressdialog-content">
+
+        <form action="/home/myreview" method ="get">  
+        <div class="addressform">
+            <div>
+
+                <div class="addressformfield">
+                    <label>
+                        评分
+                    </label>
+                    <input type="hidden" name="mid" value="{{$v->mid}}">
+                     <input type="hidden" name="uid" value="{{$v->uid}}">
+                    <select name="level" style="width: 80px;">
+                           <option value="5">5 分</option>
+                           <option value="4">4 分</option>
+                           <option value="3">3 分</option>
+                           <option value="2">2 分</option>
+                           <option value="1">1 分</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="addressformfield phonefield">
+                    <label>
+                       评价
+                    </label>
+                    <textarea name="content" style="width: 200px;height: 100px;"></textarea>
+                    <div class="addressformfield-hint">
+
+                        <span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="addressform-buttons">
+                <button onclick="down()">
+                    保存
+                </button>
+                <button type="button" onclick="down()">
+                    取消
+                </button>
+            </div>
+        </div>
 </div>
+        </form>
+
+    
+            
+        
+
+
+                    </td>
+                    
+                </tr>
+                
+                @endforeach
+                <div id="dvs" style="display:none;" onclick="down()"></div>
+                    <script>
+                    function tan(){
+                        $('#haha').attr('style','display:block;z-index:1003;left:245px;top:100px;');
+                        $('#dvs').attr('style','display:block;z-index:1002;position:fixed;left:0px;top:0px;width:100%;height:100%;opacity:0.5;background:rgb(0, 0, 0);');
+                    }
+                    
+                    function down(){
+                        $('#haha').attr('style','display:none;');
+                        $('#dvs').attr('style','display:none;');
+                        // $('#pingjia').attr('style','display:none;');
+                    }
+
+
+                </script>
+    <script>
+        $('#tan').click(function(){
+        $('#haha').attr('style','display:block;z-index:1003;left:245px;top:80px;');
+        $('#dvs').attr('style','display:block;z-index:1002;position:fixed;left:0px;top:0px;width:100%;height:100%;opacity:0.5;background:rgb(0, 0, 0);');
+    });
+
+        function down(){
+        $('#haha').attr('style','display:none;');
+        $('#dvs').attr('style','display:none;');
+    }
+    </script>
+
+
 
 @endsection
 

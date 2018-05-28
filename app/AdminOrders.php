@@ -13,9 +13,11 @@ class AdminOrders extends Model
     public $timestamps = false;
 
 
+
      public function details()
     {
     	return $this->hasMany('App\ReadOrders','oid','oid');
     }
+
 
 }
