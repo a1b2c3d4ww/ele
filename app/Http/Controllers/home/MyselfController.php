@@ -204,6 +204,7 @@ class MyselfController extends Controller
            return back();
 	}
 
+
 	public function myreview(Request $req)
 	{
 		$res = $req->input();
@@ -220,4 +221,5 @@ class MyselfController extends Controller
 		return back();
 
 	}
+
 }

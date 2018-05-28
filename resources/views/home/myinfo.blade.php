@@ -51,8 +51,10 @@
     </h3>
     <!-- end ngIf: pageTitleVisible -->
     <div class="profile-panelcontent" ng-transclude="">
+
          <form action="/home/myinfopic" method="post" enctype='multipart/form-data'>          
         <div class="profileinfo ng-scope">
+
             <p class="profileinfo-item">
             <div class="profile-avatarwrap">
                 {{csrf_field()}}
@@ -139,8 +141,9 @@
                 </span>
 
                 </p>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button id="tan" type="button" class="btn-stress">修改</button>
+
+            <button id="tan" type="button" class="btn-stress" style="border-radius:4px;margin-top:20px;margin-left:15%;">修改</button>
+
 
             <!-- ngIf: user.email -->
         </div>
@@ -168,14 +171,18 @@
     </div>
     <div class="addressdialog-content">
 
+
         <form action="/home/dmyinfo/{{$res->uid}}" method ="get">  
+
         <div class="addressform">
             <div>
                 <div class="addressformfield">
                     <label id="xing">
                         姓名
                     </label>
+
                     <input placeholder="请输入您的姓名" name="name" value="{{$res->name}}">
+
                     <div class="addressformfield-hint">
                         <span>
                         </span>
@@ -241,7 +248,9 @@
 
                     保存
                 </button>
+
                 <button type="button" onclick="down()">
+
                     取消
                 </button>
             </div>

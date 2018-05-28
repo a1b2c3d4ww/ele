@@ -6,9 +6,11 @@
 
 @section('content')
     <div style="width:100%;height:10px"></div>
-    <div class="ng-scope">
+<div class="ng-scope">
     <div class="profile-container container">
         @include('layout.list')
+
+
 
 
         <div class="profile-panel" role="main">
@@ -17,11 +19,8 @@
                 <div class="profile-info ng-scope">
                     <div class="profile-infoitem">
                         <div class="profile-avatarwrap">
-                            
-                           <img src="{{$res->upic}}" width="100%">
-                
+                            <img src="{{$res->upic}}" width="100%">
                             <a href="/home/myinfo" class="profile-edit">
-
                                 编辑资料
                             </a>
                         </div>
@@ -38,16 +37,8 @@
                         </div>
                         
                     </div>
-                    <div class="profile-infoitem">
-                       
-                    </div>
-                    <div class="profile-infoitem">
-                       
-                    </div>
-                    <div class="profile-infoitem">
-                        
-                    </div>
                 </div>
+
    
 
 
@@ -153,10 +144,11 @@
                     @endif
 
 
+
                 </div>
+                @endforeach @endif
             </div>
         </div>
-
-	
-
+    </div>
+</div>
 @endsection

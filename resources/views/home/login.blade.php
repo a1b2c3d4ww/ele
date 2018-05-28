@@ -34,8 +34,6 @@
             <script src="/home/js/jquery-3.2.1.min.js"></script>
             <script>
                 $('#code,.mws-form-message').delay(2000).fadeOut(10); 
-
-                
             </script>
 
         
@@ -66,8 +64,9 @@
                                 <span>换一张</span>
                             </div>
                         </div>
-                    </section>
-
+                </section>
+                <div style="width:80px;height:20px;line-height:20px;color:#09A3DC;float:right;text-align:right;margin-top:3px;"><a href="/home/forget" style="text-decoration:underline;">忘记密码?</a>
+                </div>
                 <button class="SubmitButton-2wG4T">
                   登录
                 </button>

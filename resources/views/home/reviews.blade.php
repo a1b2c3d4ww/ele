@@ -69,11 +69,13 @@
                         <meta itemprop="url" content="https://www.ele.me/shop/1315079">
                         <img ng-src="//fuss10.elemecdn.com/9/58/642bb5ea828b2fe054bc425ce2050png.png?imageMogr2/thumbnail/95x95/format/webp/quality/85"
 
+
                         alt=" {{$merchant->mpic}}" itemprop="image" src="{{$merchant->mpic}}">
                         <div class="shopguide-info-wrapper">
                             <div>
                                 <h1 title="沿海405烤场" ng-class="{hastip: shop.tip}" itemprop="name" class="ng-binding">
                                     {{$merchant->mname}}
+
 
                                 </h1>
                                 <!-- ngIf: shop.tip -->
@@ -182,7 +184,9 @@
                                         由
                                         <span class="ng-binding">
 
+
                                               {{$merchant->mname}}
+
 
                                         </span>
                                         提供配送服务

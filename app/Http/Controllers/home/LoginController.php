@@ -58,10 +58,10 @@ class LoginController extends Controller
   		}
 
   		$code = $req->input('code');
-          $check = Session::get('code');
-          if($code!=$check){
-              return back()->with('err','验证码错误');
-          }
+      $check = Session::get('code');
+      if($code!=$check){
+          return back()->with('err','验证码错误');
+      }
 
   		$pass = $req->input('password');
   		if(!Hash::check($pass,$data->password)){

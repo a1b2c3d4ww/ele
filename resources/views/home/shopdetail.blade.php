@@ -15,7 +15,7 @@
         <div class="shopguide-info">
             
 
-	
+    
            
             <img src="{{$merchant->mpic}}">
           
@@ -32,24 +32,7 @@
                 <p class="shopguide-info-rate">
                     <div class="starrating icon-star ng-isolate-scope" title="评分5.0分" rate-star=""
                     rating="shop.rating">
-                         @if($merchant->level==0)
-                            <span class="icon-star" style="width:0%;;">
-                         @endif
-                        @if($merchant->level==1)
-                            <span class="icon-star" style="width:20%;;">
-                         @endif
-                         @if($merchant->level==2)
-                            <span class="icon-star" style="width:40%;;">
-                         @endif
-                         @if($merchant->level==3)
-                            <span class="icon-star" style="width:60%;;">
-                         @endif
-                         @if($merchant->level==4)
-                            <span class="icon-star" style="width:80%;;">
-                         @endif
-                         @if($merchant->level==5)
-                            <span class="icon-star" style="width:100%;;">
-                         @endif
+                        <span class="icon-star" style="width: 100%;">
                         </span>
                     </div>
                     (
@@ -68,7 +51,7 @@
                     <li class="shopguide-extra-item shopguide-extra-compete ng-scope">
                         <div itemscope="" itemprop="aggregateRating">
                             <h2 class="color-stress ng-binding" itemprop="ratingValue">
-                                {{$merchant->level}}.0
+                                5.0
                             </h2>
                             <meta itemprop="bestRating" content="5">
                             <meta itemprop="reviewCount" content="107">
@@ -86,7 +69,26 @@
                             </p>
                         </div>
                         <div>
-                            
+                            <p>
+                                服务态度
+                                <div class="starrating icon-star ng-isolate-scope" title="评分5.0分">
+                                    <span class="icon-star" style="width: 100%;">
+                                    </span>
+                                </div>
+                                <span class="color-stress ng-binding">
+                                    5.0分
+                                </span>
+                            </p>
+                            <p>
+                                菜品评价
+                                <div class="starrating icon-star ng-isolate-scope" title="评分4.7分">
+                                    <span class="icon-star" style="width: 93.5544%;">
+                                    </span>
+                                </div>
+                                <span class="color-stress ng-binding">
+                                    4.7分
+                                </span>
+                            </p>
                         </div>
                     </li>
                     <!-- end ngIf: shopRatingScore -->
@@ -301,15 +303,13 @@ sticky-fn="shopNavSticky">
             <script src="/home/js/jquery.fly.min.js" type="text/javascript"></script>
             <script>
                    var a =  $('button[name=jia]').length;
-                   // var gid =  $('button[name=jia]').val();
-                   // console.log(gid);
                    var sum = 0; 
                    var gname; 
                    var j=0;
                     var arrs = [];
                     var arr = Array(a).fill(0);
                    $('button[name=jia]').each(function(index,element){
-                        // var gname;
+
 
                         this.onclick = function(){
                                 
@@ -331,7 +331,6 @@ sticky-fn="shopNavSticky">
 
                             $.get('/home/addcartajax/'+gid,{},function(data){
                                 
-                               // console.log(arr[index]);
                                   if(!arrs.contains(gid)){
                                       arrs.unshift(gid);
                                    }
@@ -344,11 +343,9 @@ sticky-fn="shopNavSticky">
                                        $('.itegid').eq(ins).val(gid);
                                        $('.price').eq(ins).val(arr[index]*data.price);
 
-
                                          
                                  })
-                            
-                          // console.log(index);
+
                        
                         flyer.fly({
                             start:{
@@ -369,17 +366,11 @@ sticky-fn="shopNavSticky">
                             $('#btn-add').html(sum);
                             $('#btn-add').addClass('shop-cartpieces');
                             $('#jiesuan').removeClass('disabled');
+                            $('#jiesuan').removeAttr('disabled');
 
-
-                        
-
-
-                            sum =0;       
-                            // return gname;
+                            sum =0;     
                            
                         }
-                       
-                       // console.log(arr);
               
                     })
 
@@ -396,7 +387,7 @@ sticky-fn="shopNavSticky">
                     } return false;  
 
                 }  
-                   // function up(){
+
 
                    $('button[name=jian]').each(function(index,element){
                                 
@@ -419,28 +410,22 @@ sticky-fn="shopNavSticky">
 
                                $.get('/home/subcartajax/'+gid,{},function(data){
                                 if(arrs.contains(gid)){
-                                     var ins = arrs.indexOf(gid);
+                                       var ins = arrs.indexOf(gid);
                                        $('.itemname').eq(ins).val(data.gname)
                                        $('.count').eq(ins).val(arr[index]);
-                                      // console.log(arr[index]) ;
                                        $('.itegid').eq(ins).val(arrs);
                                        $('.price').eq(ins).val(arr[index]*data.price);
                                    }
-                                      
-
-
-                              
 
                              })
+
                             var aa =  $('#btn-add').text(sum);
                             sum =0;
-
                             if(aa.text()<1){
                                 $('#btn-add').removeClass('shop-cartpieces');
                                 $('#btn-add').empty();
                                 $('#jiesuan').addClass('disabled');
-                                $('#jiesuan').attr('disabled');
-                                $('#jiesuan').text('购物车是空的');
+                                $('#jiesuan').attr('disabled','disabled');
                             };
                         })    
                     })
@@ -454,8 +439,6 @@ sticky-fn="shopNavSticky">
                             }  
                             return false;  
                         }  
-               // }
-               // up();
 
                     function hhh(){
                        $('div[name=abcde] input').each(function(){
@@ -468,31 +451,26 @@ sticky-fn="shopNavSticky">
                        })
                             $('#jiesuan').addClass('disabled');
                                 $('#jiesuan').attr('disabled');
-                                $('#jiesuan').text('购物车是空的');
                             $('.shop-cartbasket-tablerow').remove();
-                            // only();
+
                    }
 
             </script>
             <style>
 
-
                 .mine{border:0px;color:#666;font-size:13px;text-overflow:ellipsis;margin-left:0px;width:140px;height:28px;}
                 .your{font-size:11px;color:#666;border:1px solid #ddd;margin-left:10px;text-align:center;width:40px;height:22px;}
                 .her{border:0px;color:#666;color:#F17530; margin-left:15px; margin-right:10px;width:30px;height:28px;text-align:right;}
-
 
             </style>
             <script>
                  $('.carts').each(function(){
                     $(this).click(function(){
                     var gid = $('input[name=hide]').val();
-                    // $(this).siblings().find('.ng-valid').val(1);
-                    // console.log(gid);
                     $(this).hide();
                     $(this).next().show();
                     $.get('/home/cartajax/'+gid,{},function(data){
-                        // console.log(data);
+
                 })
             })
         })
@@ -548,7 +526,7 @@ sticky-fn="shopNavSticky">
 
                     <div class="shop-cart">
 
-                    
+
                     <form action="/home/orderest/index/{{$mid}}" method="get">
 
 
@@ -577,7 +555,6 @@ sticky-fn="shopNavSticky">
                         </div>
 
                         
-
                         <div class="shop-cartbasket-empty ng-scope">
                             <div class="icon-cart">
                             </div>
@@ -599,9 +576,9 @@ sticky-fn="shopNavSticky">
                                 配送费¥6
                             </div>
                         </div>
-                 
-                
-                        <button class="shop-cartfooter-checkout ng-binding disabled"  id="jiesuan" onclick="jiesuan()">
+
+
+                        <button class="shop-cartfooter-checkout ng-binding disabled" disabled="disabled" id="jiesuan" onclick="jiesuan()">
                             结算
                         </button>
                     </div>
@@ -773,11 +750,8 @@ sticky-fn="shopNavSticky">
 
 @section('js')
 
-
     <script>
-       
-
-      
+           
 
         $('#one').hover(function(){
 

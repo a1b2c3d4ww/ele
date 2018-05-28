@@ -24,7 +24,9 @@ class OrdersController extends Controller
         }
 
          $data = AdminOrders::get();
+
         $res = AdminOrders:: where($condition)->orderBy('otime','desc')->paginate($req->input('num',10));   
+
           // dd($res) ;
 
         $count =  count(AdminOrders::all());

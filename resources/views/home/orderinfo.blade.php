@@ -61,8 +61,6 @@
                 </div>
             </div>
             <div class="sidebar-content">
-                <!-- ngInclude: activeTemplate ? ('/common/page/_block/sidebar/sidebar-'+
-                activeTemplate + '/sidebar-'+ activeTemplate + '.html') : '' -->
             </div>
         </div>
         <!-- ngView: -->
@@ -131,13 +129,12 @@
                             <dd ng-repeat="item in basket" class="ng-scope">
                                 @foreach($arr as $k=>$v)
                                 <div class="checkoutcart-tablerow">
-                                    <div class="cell itemname ng-binding" ng-bind="item.name" title="皮蛋瘦肉粥">
+                                    <div class="cell itemname ng-binding">
                                         {{$v['gname']}}
                                     </div>
                                     <div class="cell itemquantity">
                                       
-                                        <input ng-model="item.quantity" ng-change="cart.update(item)" ng-blur="cart.blur(item)"
-                                        class="ng-pristine ng-valid">{{$v['num']}}
+                                        <input class="ng-pristine ng-valid" value="{{$v['num']}}">
                                     
                                     </div>
                                     <div class="cell itemtotal " >

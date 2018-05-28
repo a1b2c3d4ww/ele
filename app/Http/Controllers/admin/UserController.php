@@ -16,7 +16,9 @@ use App\AdminUser;
 use App\AdminReviews;
 use App\AdminOrders;
 
+
 use Session;
+
 use Hash;
 
 
@@ -177,6 +179,7 @@ class UserController extends Controller
     {
         // dd($req->all());
         $res = $req->except('_token','_method','repass');
+        $res['password'] = Hash::make($req->input('password'));
         // dd($res);
         try{
               AdminUser::where('aid',$id)->update($res);

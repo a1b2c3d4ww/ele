@@ -9,7 +9,9 @@ use App\AdminMerchant;
 use App\AdminGreen;
 use App\AdminAdver;
 use App\AdminLinks;
+
 use App\AdminOrders;
+
 class StatusController extends Controller
 {
     public function merchantup($id)
@@ -51,7 +53,7 @@ class StatusController extends Controller
             return redirect('admin/green/index');
 
 
-  }
+}
 
     
     public function adverup($id,$status=0)
@@ -103,11 +105,13 @@ class StatusController extends Controller
        return redirect('/admin/links'); 
     }
 
+
         public function orderdown($id,$status=3)
     {
        $data['status'] = $status;
           try{
            AdminOrders::where('oid',$id)->update($data);
+
         }catch(\Exception $e){
            return back()->with('msg','更新失败');
         }
@@ -121,7 +125,9 @@ class StatusController extends Controller
     {
        $data['status'] = $status;
           try{
+
            AdminOrders::where('oid',$id)->update($data);
+
         }catch(\Exception $e){
            return back()->with('msg','更新失败');
         }
@@ -132,13 +138,17 @@ class StatusController extends Controller
     {
        $data['status'] = $status;
           try{
+
            AdminOrders::where('oid',$id)->update($data);
+
         }catch(\Exception $e){
            return back()->with('msg','更新失败');
         }
        return redirect('/home/myorder'); 
 
     }
+
+
 
 
 }

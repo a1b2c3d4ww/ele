@@ -51,12 +51,15 @@
                         <tr role="row">
                             <th 
 
+
                             style="">
+
 
                                 订单号
                             </th>
                          
                             <th 
+
 
                             style="">
                                 联系人
@@ -121,7 +124,9 @@
                              {{$v->sum}}
                             </td>
                             <td class=" ">
+
                                
+
                                         @if($v->status == 1)
                                            已下单
                                         @elseif($v->status == 0)
@@ -131,7 +136,6 @@
                                         @elseif($v->status == 4)
                                             交易完成    
                                         @endif
-    
 
                             </td>       
                                <td class=" ">
@@ -143,16 +147,20 @@
                                 <td class=" ">
                                      @if(Session::get('adminUser')->auth=='1')
                        <span class="btn-group">
+
                                              @if($v->status == 1)
                                              <a href="/admin/orderdown/{{$v->oid}}" class="btn btn-small"><i class="icon-ok-sign"></i></a>
                                             @else
                                             
                                             @endif
+
                                             <a href="/admin/read/{{$v->oid}}" class="btn btn-small"><i class="icon-list-2"></i></a>
 
                                              <a href="/admin/orders/{{$v->oid}}/edit" class="btn btn-small"><i class="icon-pencil"></i></a>
 
-                                           <form action="/admin/orders/{{$v->oid}}" method='post' style='display:inline'>
+
+                                           <form action="/admin/orders/{{$v->uid}}" method='post' style='display:inline'>
+
                             {{csrf_field()}}
 
                             {{method_field('DELETE')}}
@@ -170,7 +178,9 @@
                 </table>
                 <div class="dataTables_info" id="DataTables_Table_1_info">
 
+
                    共{{$count}}条
+
 
                 </div>
                 <style>

@@ -124,7 +124,9 @@
                 <p>
                     预测送餐时间为
                     <em class="color-stress ng-binding" ng-bind="leadTime | date:&#39;HH:mm&#39;">
+
                        30分钟内
+
                     </em>
                     ，请保持手机畅通
                 </p>
@@ -133,7 +135,7 @@
                 <a class="btn-primary btn-lg" href="/home/myorder">
                     查看订单
                 </a>
-                <a class="inherit" hardjump="" href="/">
+                <a href="/">
                     返回首页
                 </a>
             </div>

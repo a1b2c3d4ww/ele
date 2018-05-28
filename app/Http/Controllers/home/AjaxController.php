@@ -8,6 +8,7 @@ use App\AdminCate;
 use App\AdminMerchant;
 use App\AdminGreen;
 
+use App\AdminMember;
 
 use App\AdminUser;
 use App\Enshrine;
@@ -18,6 +19,15 @@ use App\Enshrine;
 use Session;
 class AjaxController extends Controller
 {
+
+    public function firstlist()
+    {
+      $mid =  $_GET['mid'];
+      $data = AdminMerchant::where('mid',$mid)->first();
+
+      return $data;
+    }
+
     public function firstajax($id)
     {
     	$data  = AdminCate::get();
@@ -42,15 +52,7 @@ class AjaxController extends Controller
     		return 0;
     	}
     }
-    // public function cartajax($id){
-    //   $greens =  AdminGreen::where('gid',$id)->get();
-    //   $cnt = 0;
-    //   $greens['cnt'] = $cnt;
-    //   session(['carts.'.$id=>$greens]);
-    //   $data = session()->get('carts.'.$id);
-    //   // dd($data);
-    //   return $data;
-    // }
+
     public function addcartajax($id)
     {
     
@@ -85,6 +87,21 @@ class AjaxController extends Controller
               echo 0;
          }
 
+    }
+
+
+    public function passwordAjax()
+    {
+      $user = Session::get('data.uname');
+      $tel = $_GET['tel'];
+
+      $data = AdminMember::where('uname',$user)->where('tel',$tel)->first();
+      // return $data;
+      if($data){
+        echo 1;
+      }else{
+        echo 0;
+      }
     }
 
 

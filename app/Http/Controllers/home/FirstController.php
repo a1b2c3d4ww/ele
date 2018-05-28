@@ -31,6 +31,8 @@ class FirstController extends Controller
                               'adver'=>$adver,
                               'count'=>$count
                             ]);
+
      
+
    }
 }

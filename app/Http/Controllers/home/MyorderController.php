@@ -19,6 +19,7 @@ class MyorderController extends Controller
 	    $order = AdminOrders::where('uid',$id)->orderBy('otime','desc')->get();
 		// dd($order);
 
+
 		return view('home.myorder',['res'=>$res,'order'=>$order]); 
 
 

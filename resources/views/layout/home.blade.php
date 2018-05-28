@@ -58,7 +58,7 @@
 
                 $('#info').hover(function(){
                     $('#myorder').attr('style','left:-82px;top:159px;');
-                    $('.tooltip-content').text('我的信息');
+                    $('.tooltip-content').text('我的资料');
                 },function(){
                      $('#myorder').attr('style','display:none');
                 });
@@ -199,8 +199,11 @@
                                     <a class="icon-star" href="/home/collect">
                                         我的收藏
                                     </a>
-                                    <a class="icon-location" href="/home/addr">
+                                    <a class="icon-location" href="/home/myinfo">
                                         我的地址
+                                    </a>
+                                    <a class="icon-setting" href="/home/updatepwd">
+                                        修改密码
                                     </a>
                                     <a class="icon-logout" href="/home/logout">
                                         退出登录

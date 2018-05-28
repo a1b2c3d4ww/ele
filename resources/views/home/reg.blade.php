@@ -7,9 +7,6 @@
     <link rel="shortcut icon" href="/home/images/log.png" type="image/png">
     <link href="/home/css/vendor11.css" rel="stylesheet">
     <link href="/home/css/login.css" rel="stylesheet">
-    <style>
-        
-    </style>
 </head>
 <body>
     <div class="App-1EAON">
@@ -153,28 +150,28 @@
             
         
         <script src="/home/js/jquery-3.2.1.min.js"></script>
-            <script>      
-                var i=1;
-                $('.SwitchButton-1rBfm').click(function(){
+        <script>      
+            var i=1;
+            $('.SwitchButton-1rBfm').click(function(){
 
-                    i++;
+                i++;
 
-                    if(i%2==0){
-                        $('#show').removeClass('SwitchButton-3BmOw');
-                        $('#show').addClass('SwitchButton-3wLB9');
-                        $('#show a').html('abc');
-                        $('input[name=password]').attr('type','text');
-                        $('input[name=repass]').attr('type','text');
-                        
-                    }else{
-                        $('#show').removeClass('SwitchButton-3wLB9');
-                        $('#show').addClass('SwitchButton-3BmOw');
-                        $('input[name=password]').attr('type','password');
-                        $('input[name=repass]').attr('type','password');
-                        $('#show a').html('···');
-                    }       
-                });
-            </script>
+                if(i%2==0){
+                    $('#show').removeClass('SwitchButton-3BmOw');
+                    $('#show').addClass('SwitchButton-3wLB9');
+                    $('#show a').html('abc');
+                    $('input[name=password]').attr('type','text');
+                    $('input[name=repass]').attr('type','text');
+                    
+                }else{
+                    $('#show').removeClass('SwitchButton-3wLB9');
+                    $('#show').addClass('SwitchButton-3BmOw');
+                    $('input[name=password]').attr('type','password');
+                    $('input[name=repass]').attr('type','password');
+                    $('#show a').html('···');
+                }       
+            });
+        </script>
         <div class="App-OjtAb">
             <div class="LoginFooter-UxQIr">
                 <div class="LoginFooter-2KaAB">
