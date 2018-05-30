@@ -18,7 +18,7 @@
             <div class="profile-panelcontent" ng-transclude="">
                 <div class="profile-info ng-scope">
                     <div class="profile-infoitem">
-                        <div class="profile-avatarwrap">
+                        <div class="profile-avatarwrap" style="background:url('/home/images/toux.jpg');">
                             <img src="{{$res->upic}}" width="100%">
                             <a href="/home/myinfo" class="profile-edit">
                                 编辑资料
@@ -26,7 +26,7 @@
                         </div>
                         <div class="profile-perosondata">
                             <h3 class="profile-name ng-binding">
-                                早上好，
+                                您好，
                                 <strong class="ng-binding">
                                     {{$res->uname}}
                                 </strong>
@@ -54,17 +54,8 @@
 
                         <a class="tabnavigation-navitem" href="/home/enshrine">
 
-
                             我的收藏
                         </a>
-                        <div class="tabnavigation-rightitem ng-scope ng-binding simplepagination"
-                        simplepagination="" pagination-context="restaurantContext" ng-show="restaurantContext.data.length">
-                            1/1
-                            <span class="pre-btn icon-profile-left-arrow disable" ng-class="{&#39;disable&#39;:currentPage===1}">
-                            </span>
-                            <span class="next-btn icon-profile-right-arrow disable" ng-class="{&#39;disable&#39;:currentPage===pageCount}">
-                            </span>
-                        </div>
                     </div>
 
 
@@ -146,7 +137,7 @@
 
 
                 </div>
-                @endforeach @endif
+             
             </div>
         </div>
     </div>

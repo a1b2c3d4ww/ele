@@ -81,6 +81,9 @@ Route::get('/home/addcartajax/{id}','home\AjaxController@addcartajax');//添加�
 Route::get('/home/subcartajax/{id}','home\AjaxController@subcartajax');	//减少菜品
 Route::get('/home/enshrineajax/{id}','home\AjaxController@enshrineajax');	//收藏
 Route::get('/home/merchant/index/{id}','home\MerchantController@index');//商家详情
+Route::get('/home/mycarts','home\MyselfController@mycarts');//我的购物车
+
+Route::get('/home/mycarts/del/{id}','home\MyselfController@mycartsdel');//删除购物车
 //前台
 
 Route::group(['middleware'=>'login'],function(){
@@ -107,36 +110,13 @@ Route::group(['middleware'=>'login'],function(){
 	Route::get('/home/addr','home\MyorderController@addr');//地址管理
 	Route::get('/home/enshrine','home\MyselfController@enshrine');//我的收藏
 	Route::get('/home/enshrine/del/{id}','home\MyselfController@enshrinedel');//删除收藏
-	Route::get('/home/mycarts','home\MyselfController@mycarts');//我的购物车
 
-	Route::get('/home/mycarts/del/{id}','home\MyselfController@mycartsdel');//删除购物车
 
 	Route::get('/home/reviews/{id}','home\MyselfController@reviews');//评论
 
 	
 });
-Route::group([],function(){
-	
-	
 
-	});
-Route::group([],function(){
-	
-	});	
-Route::group([],function(){
-
-
-	
-});
-Route::group([],function(){
-	
-});	
-
-Route::group([],function(){
-
-	
-	
-});
  
      Route::post('admin/dologin','admin\LoginController@dologin');
 	Route::get('admin/login','admin\LoginController@login');

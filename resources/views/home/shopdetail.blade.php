@@ -200,25 +200,19 @@
                     商家资质
                 </a>
                 
-             <div ng-show="!loading &amp;&amp; !searchEnv" class="shopmenu-nav ng-isolate-scope"
-sticky="" sticky-class="sticky" sticky-body-class="shopmenu-nav-sticky"
-sticky-fn="shopNavSticky">
-    @foreach($data as $k=>$v)
-    <!-- ngRepeat: category in categorys -->
-    <a href="#miao{{$k}}" ng-repeat="category in categorys" ng-click="scrollToCategory(category)"
-    ng-class="{active: currentCategory.id === category.id}" class="ng-binding ng-scope ">
-        {{$v->fname}}
-    </a>
-     @endforeach
-    <!-- end ngRepeat: category in categorys -->
-            </div>
-              
+             <div  class="shopmenu-nav ng-isolate-scope">
+            @foreach($data as $k=>$v)
+          
+            <a href="#miao{{$k}}" class="ng-binding ng-scope ">
+                {{$v->fname}}
+            </a>
+             @endforeach
+    
+            </div>       
                
                 <span class="shopnav-filter ng-scope">
-
                 </span>
 
-                <!-- end ngIf: shopAction===' menu' -->
             </div>
    
         </div>
@@ -244,8 +238,8 @@ sticky-fn="shopNavSticky">
                     <div class="shopmenu-food ng-isolate-scope">
                         
                         <!-- ngIf: food.image_path -->
-                        <span class="col-1 ng-scope" ng-if="food.image_path">
-                            <a href="javascript:" ng-click="showInfo(food)">
+                        <span class="col-1 ng-scope">
+                            <a href="javascript:">
                                 <img src="{{$vv->gpic}}">
                             </a>
                         </span>
@@ -258,8 +252,7 @@ sticky-fn="shopNavSticky">
                                {{$vv->details}}
                             </p>
                             <p>
-                                <div class="starrating icon-star ng-isolate-scope" title="评分0.0分" rate-star=""
-                                rating="food.rating">
+                                <div class="starrating icon-star ng-isolate-scope" title="评分0.0分">
                                     <span class="icon-star" style="width: 0%;">
                                     </span>
                                 </div>
@@ -278,8 +271,6 @@ sticky-fn="shopNavSticky">
                                 <div class="ng-scope" >
                                       
                                     <div class="shop-cartctrl ng-scope" name="abcde" >
-
-                                      
 
                                         <button class="ctrl minus" name="jian" value=" {{$vv->gid}}">
                                             -
@@ -613,26 +604,25 @@ sticky-fn="shopNavSticky">
             <div class="dialog" role="dialog" dialog="ITEMINFO" style="display: none;">
                 <div class="dialog-close icon-close">
                 </div>
-                <div class="dialog-content" ng-transclude="">
-                    <div shop-iteminfo="" item-info="itemInfo" class="ng-scope ng-isolate-scope">
+                <div class="dialog-content">
+                    <div class="ng-scope ng-isolate-scope">
                         <div class="shop-iteminfo">
                             <div class="iteminfo-imagegroup">
-                                <img class="mainimage" ng-src="" alt="的图片">
-                                <div ng-show="imagesPath.length &gt; 1" class="ng-hide">
+                                <img class="mainimage" alt="的图片">
+                                <div class="ng-hide">
                                     <a href="javascript:" class="imagegroup-ctrl icon-profile-left-arrow">
                                     </a>
                                     <ul class="imagelist">
                                         <!-- ngRepeat: imagePath in imagesPath track by $index -->
                                     </ul>
-                                    <a href="javascript:" ng-click="showImageNext(4)" class="imagegroup-ctrl icon-profile-right-arrow">
+                                    <a href="javascript:" class="imagegroup-ctrl icon-profile-right-arrow">
                                     </a>
                                 </div>
                             </div>
                             <section class="iteminfo-info">
-                                <h5 ng-bind="itemInfo.name" class="ng-binding">
+                                <h5 class="ng-binding">
                                 </h5>
-                                <p ng-show="!!itemInfo.description" class="description ng-binding ng-hide"
-                                ng-bind="itemInfo.description">
+                                <p class="description ng-binding ng-hide">
                                 </p>
                                 <div class="iteminfo-cartitem">
                                     <div class="iteminfo-price">
@@ -692,6 +682,15 @@ sticky-fn="shopNavSticky">
                         该商家支持开发票，请在下单时填写好发票抬头
                     </li>
                     @endif
+
+                    @if($merchant->safe==1)
+                    <li ng-repeat="support in shop.supports" class="ng-binding ng-scope">
+                        <span class="ng-binding" style="background-color: rgb(153, 153, 153);">
+                            保
+                        </span>
+                        该商户食品安全已由中国太平洋保险承保，食品安全有保障
+                    </li>
+                    @endif
                     <!-- end ngRepeat: support in shop.supports -->
                 </ul>
                 <a href="javascript:" class="shopcomplaint" ng-click="testLogin()">
@@ -705,10 +704,9 @@ sticky-fn="shopNavSticky">
                     <h5 class="complaint-title ng-scope">
                         举报商家
                     </h5>
-                    <form ng-submit="complaint()" class="ng-scope ng-pristine ng-valid">
+                    <form class="ng-scope ng-pristine ng-valid">
                         <label class="complaint-field">
-                            <textarea class="shopcomplaint-textarea ng-pristine ng-valid" ng-model="complaintObj.text"
-                            rows="6" cols="40">
+                            <textarea class="shopcomplaint-textarea ng-pristine ng-valid" rows="6" cols="40">
                             </textarea>
                         </label>
                         <div class="complaint-field">
@@ -724,7 +722,7 @@ sticky-fn="shopNavSticky">
 </div>
 
 <div class="sidetools" side-tools="">
-    <a href="http://kaidian.ele.me" class="sidetools-item icon-visit-history"
+    <a href="javascript:" class="sidetools-item icon-visit-history"
     target="_blank" id="one">
     </a>
     <div class="sidetools-item icon-qrcode">

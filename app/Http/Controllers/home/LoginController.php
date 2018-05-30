@@ -9,6 +9,7 @@ use Gregwar\Captcha\CaptchaBuilder;
 use App\AdminMember;
 use Hash;
 use Session;
+use URL;
 
 class LoginController extends Controller
 {
@@ -69,8 +70,7 @@ class LoginController extends Controller
   		}else{
   			$user = AdminMember::where('uname',$res)->first();
   			Session::put('homeUser',$user);
-  			return redirect('/');
-  		}
+  			return redirect('/');  		}
 
   	}
 

@@ -163,10 +163,10 @@ class EleController extends Controller
             $suffix = $req->file('upic')->getClientOriginalExtension(); 
             $path = $req->file('upic')->move('./upload', $name.'.'.$suffix);
             $res['upic'] = '/upload/'.$name.'.'.$suffix;
-          
-            if(file_exists('.'.$data->upic)){
-            unlink('.'.$data->upic);
-             }
+            
+            if($data->upic!=null){
+                unlink('.'.$data->upic);
+            }
         }
        
 

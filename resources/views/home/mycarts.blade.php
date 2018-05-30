@@ -75,7 +75,7 @@
                                     <span class="color-stress ng-binding" ng-bind="total">
                                         {{Session::get('orders.sum')}}
                                     </span>
-                                <button class="sidebarcart-submit ng-binding" style="float:right;">
+                                <button class="sidebarcart-submit ng-binding" style="float:right;border-radius:4px;">
                                     去结算
                                 </button>
                                 <!-- </div> -->

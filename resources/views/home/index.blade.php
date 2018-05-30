@@ -172,7 +172,7 @@
                     @endif
                 </div>
                  @if($v->status=='0')
-                <div class="rstblock-relaxing">商家休息,暂不接单</div>
+                <div class="rstblock-relaxing" style="margin-top:2px;">商家休息,暂不接单</div>
                 @endif
             </div>
         </a>
@@ -180,7 +180,7 @@
     </div>
 
 
-<div class="clearfix liebiao" style="height: 840px;">
+<div class="clearfix liebiao" style="height:200px;">
             
         </div>
     </div>
@@ -262,7 +262,7 @@
                                
                                 
                             </div>`);
-                        div2.text(data[i].mname);
+                        div3.text(data[i].mname);
                         div2.append(div3);
                         div2.append(div4);
                         div2.append(div5);
@@ -358,7 +358,7 @@
                                
                                 
                             </div>`);
-                        div2.text(data[i].mname);
+                        div3.text(data[i].mname);
                         div2.append(div3);
                         div2.append(div4);
                         div2.append(div5);
@@ -468,9 +468,11 @@
                     async:false
             })
         
-            
-            $(this).after(dvs);
+            if(mid!=''){
+                $(this).after(dvs);
 
+            }
+            
             // 获取.rstblock的左侧偏移量和宽
             var l = $(this).offset().left; 
             var w = $(this).width(); 
