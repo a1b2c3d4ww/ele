@@ -94,15 +94,16 @@
                             <div class="mws-form-item">
                                 <textarea name="details" rows="" cols="" class="required large">{{$res->details}}</textarea>
                             </div>
+
                 </div>
-                    </div>
+           <div class="mws-button-row">
+                <center> <input type="submit" value="提交" class="btn btn-danger"></center>
+            </div>
                 </div>  
               {{ csrf_field() }}
              
             </div>
-            <div class="mws-button-row">
-                <center> <input type="submit" value="提交" class="btn btn-danger"></center>
-            </div>
+           
         </form>
     </div>
 </div>

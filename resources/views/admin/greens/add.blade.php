@@ -94,16 +94,16 @@
                                 <textarea name="details" rows="" cols="" class="required large"></textarea>
                             </div>
                 </div>
-                    </div>
+                    <div class="mws-button-row">
+                <center> <input type="submit" value="添加" class="btn btn-danger"></center>
+            </div>
                 </div>  
                 <input type="hidden" name="mid" value="{{$mid}}"> 
                 <input type="hidden" name="fid" value="{{$fid}}"> 
               {{ csrf_field() }}
              
             </div>
-            <div class="mws-button-row">
-                <center> <input type="submit" value="添加" class="btn btn-danger"></center>
-            </div>
+            
         </form>
     </div>
 </div>
