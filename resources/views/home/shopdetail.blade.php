@@ -29,10 +29,27 @@
                         <!-- ngIf: isJingHua -->
                     </a>
                 </div>
-                <p class="shopguide-info-rate">
+                   <p class="shopguide-info-rate">
                     <div class="starrating icon-star ng-isolate-scope" title="评分5.0分" rate-star=""
                     rating="shop.rating">
-                        <span class="icon-star" style="width: 100%;">
+                         @if($merchant->level==0)
+                            <span class="icon-star" style="width:0%;;">
+                         @endif
+                        @if($merchant->level==1)
+                            <span class="icon-star" style="width:20%;;">
+                         @endif
+                         @if($merchant->level==2)
+                            <span class="icon-star" style="width:40%;;">
+                         @endif
+                         @if($merchant->level==3)
+                            <span class="icon-star" style="width:60%;;">
+                         @endif
+                         @if($merchant->level==4)
+                            <span class="icon-star" style="width:80%;;">
+                         @endif
+                         @if($merchant->level==5)
+                            <span class="icon-star" style="width:100%;;">
+                         @endif
                         </span>
                     </div>
                     (
@@ -45,13 +62,13 @@
                     <!-- ngRepeat: flavor in shop.flavor -->
                 </p>
             </div>
-            <div class="shopguide-info-extra">
+               <div class="shopguide-info-extra">
                 <ul>
                     <!-- ngIf: shopRatingScore -->
                     <li class="shopguide-extra-item shopguide-extra-compete ng-scope">
                         <div itemscope="" itemprop="aggregateRating">
                             <h2 class="color-stress ng-binding" itemprop="ratingValue">
-                                5.0
+                                {{$merchant->level}}.0
                             </h2>
                             <meta itemprop="bestRating" content="5">
                             <meta itemprop="reviewCount" content="107">
@@ -69,26 +86,7 @@
                             </p>
                         </div>
                         <div>
-                            <p>
-                                服务态度
-                                <div class="starrating icon-star ng-isolate-scope" title="评分5.0分">
-                                    <span class="icon-star" style="width: 100%;">
-                                    </span>
-                                </div>
-                                <span class="color-stress ng-binding">
-                                    5.0分
-                                </span>
-                            </p>
-                            <p>
-                                菜品评价
-                                <div class="starrating icon-star ng-isolate-scope" title="评分4.7分">
-                                    <span class="icon-star" style="width: 93.5544%;">
-                                    </span>
-                                </div>
-                                <span class="color-stress ng-binding">
-                                    4.7分
-                                </span>
-                            </p>
+                            
                         </div>
                     </li>
                     <!-- end ngIf: shopRatingScore -->
@@ -156,7 +154,6 @@
                 </em>
             </span>
         </div>
-
 
         @if($enshrine)
         <a class="shopguide-favor"  " href="#">

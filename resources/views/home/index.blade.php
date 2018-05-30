@@ -193,11 +193,11 @@
 @section('js')
 
     <script >
-        // console.log($('.parent'));
+
         var g ;    
 
          var list;
-
+   
         $('.parent').each(function(){
             $(this).click(function(){
                     $('.liebiaos').hide();
@@ -238,11 +238,11 @@
                        
                         list = $('.liebiao');
                         if(data[i].status==0){
-                              var a = $('<a href="#" class="rstblock-closed rstblock" name="right"></a>');
+                              var a = $('<a href="#" class="rstblock-closed rstblock  " name="right"></a>');
                               var div7 = $('<div class="rstblock-relaxing">商家休息,暂不接单</div>');
 
                         }else{
-                               var a = $('<a href="#" class="rstblock" name="right"></a>');
+                               var a = $('<a href="#" class="rstblock " name="right"></a>');
                               a.attr('href','/home/merchant/index/'+data[i].mid);
 
                         }
@@ -262,7 +262,7 @@
                                
                                 
                             </div>`);
-                        div2.text(data[i].mname);
+                        div3.text(data[i].mname);
                         div2.append(div3);
                         div2.append(div4);
                         div2.append(div5);
@@ -301,7 +301,9 @@
                 async: true
 
             })
-                 $('.liebiao').text('');    
+
+                 $('.liebiao').text('');  
+                
             })
            
          })  
@@ -334,7 +336,7 @@
                        
                         list = $('.liebiao');
                         if(data[i].status==0){
-                              var a = $('<a href="#" class="rstblock-closed rstblock" name="right"></a>');
+                              var a = $('<a href="#" class="rstblock-closed rstblock ajaxs" name="right"></a>');
                               var div7 = $('<div class="rstblock-relaxing">商家休息,暂不接单</div>');
 
                         }else{
@@ -358,7 +360,7 @@
                                
                                 
                             </div>`);
-                        div2.text(data[i].mname);
+                        div3.text(data[i].mname);
                         div2.append(div3);
                         div2.append(div4);
                         div2.append(div5);
@@ -397,14 +399,14 @@
                 async: true
 
             })
-                 $('.liebiao').text('');    
+                 $('.liebiao').text('');   
+                  
             })
            
          })  
-
-
+         
           </script>
-
+    
 
     <script>
         var dvs = $('<div class="rstpopover placeright" name="hright"></div>');

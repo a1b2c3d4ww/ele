@@ -52,7 +52,7 @@ class LoginController extends Controller
   	{
   		$res = $req->input('uname');
   		$data = AdminMember::where('uname',$res)->first();
-
+      // $url = Request::getRequestUri();
   		if(!$data){
   			return back()->with('err','用户名或密码错误');
   		}
@@ -62,14 +62,14 @@ class LoginController extends Controller
       if($code!=$check){
           return back()->with('err','验证码错误');
       }
-
+      $url = session::get('backurl');
   		$pass = $req->input('password');
   		if(!Hash::check($pass,$data->password)){
   			return back()->with('err','用户名或密码错误');
   		}else{
   			$user = AdminMember::where('uname',$res)->first();
   			Session::put('homeUser',$user);
-  			return redirect('/');
+  			return redirect($url);
   		}
 
   	}

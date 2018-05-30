@@ -15,7 +15,12 @@ class Login
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
+    {   
+        // dd('sss');
+        $url = $_SERVER['REQUEST_URI'];
+        session::put('backurl',$url);
+        // dd($url);
+         
         $user = session('homeUser.uid');
 
         if($user){

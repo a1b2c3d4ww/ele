@@ -16,6 +16,7 @@ class AdminLogin
    public function handle($request, Closure $next)
     { 
 
+        // dd('ss');
 
         if(session('adminUser.aname'))
         {   
@@ -29,3 +30,4 @@ class AdminLogin
 
     }
 }
+

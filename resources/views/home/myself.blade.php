@@ -129,24 +129,15 @@
                                         票
                                     </i>
                                     @endif
-
-
-
                                 </div>
 
                             </div>
                         </a>
-
                     </div>
-
-
                     @endforeach
                     @endif
-
-
-
                 </div>
-                @endforeach @endif
+              
             </div>
         </div>
     </div>
