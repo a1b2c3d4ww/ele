@@ -9,12 +9,8 @@
             .file {
                 position: relative;
                 display: inline-block;
-                background: #D0EEFF;
-                border: 1px solid #99D3F5;
                 border-radius: 4px;
-                padding: 4px 12px;
                 overflow: hidden;
-                color: #1E88C7;
                 text-decoration: none;
                 text-indent: 0;
                 line-height: 20px;
@@ -26,12 +22,7 @@
                 top: 0;
                 opacity: 0;
             }
-            .file:hover {
-                background: #AADFFD;
-                border-color: #78C3F3;
-                color: #004974;
-                text-decoration: none;
-            } 
+           
     </style>  
 
 <div style="width:100%;height:10px"></div>
@@ -39,8 +30,6 @@
     <div class="profile-container container">
         @include('layout.list')
 <div class="profile-panel" role="main">
-
-
 
     <h3 ng-if="pageTitleVisible" class="profile-paneltitle ng-scope">
         <span ng-bind="pageTitle" class="ng-binding">
@@ -55,22 +44,28 @@
          <form action="/home/myinfopic" method="post" enctype='multipart/form-data'>          
         <div class="profileinfo ng-scope">
 
-            <p class="profileinfo-item">
-            <div class="profile-avatarwrap">
+        
+            <div class="profile-avatarwrap" style="background:url('/home/images/toux.jpg');">
                 {{csrf_field()}}
-            <img src="{{$res->upic}}" width="100%"> 
-               
-            </div>
-          
-           <a href="javascript:;" class="file">选择文件
-            <input type="file" name="upic" id="">
-            </a>
+            
+               <a href="javascript:;" class="file" style="width:112px;height:112px;">
+                <img src="{{$res->upic}}" width="100%" style="border-radius:50%;"> 
+                <input type="file" name="upic" title="点击更改头像">
+               </a>
+               <script>
+                    setInterval(function(){
+                        var aa = $('input').eq(1).val();
+                        if(aa!=''){
+                            $('input').eq(2).attr('style','margin-top:20px;');
+                        }     
+                    },100)
+               </script>
+            </div>       
          
-            </p>
         <br>
         
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input class="btn-stress" type="submit" value="修改">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input class="btn-stress" type="submit" value="修改" style="display:none">
         </form>
 
             <!-- ngIf: user.email -->
@@ -142,7 +137,7 @@
 
                 </p>
 
-            <button id="tan" type="button" class="btn-stress" style="border-radius:4px;margin-top:20px;margin-left:15%;">修改</button>
+            <button id="tan" type="button" class="btn-stress" style="border-radius:4px;margin-top:20px;margin-left:5%;">修改</button>
 
 
             <!-- ngIf: user.email -->

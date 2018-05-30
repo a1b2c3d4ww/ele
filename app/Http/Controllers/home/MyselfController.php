@@ -19,8 +19,6 @@ use Session;
 class MyselfController extends Controller
 {
     	
-	
-
 	// 订单详情
 	public function orderdetails($id1,$id2)
 	{	
@@ -42,11 +40,6 @@ class MyselfController extends Controller
 
 		$order = AdminOrders::where('uid',$id)->first();
 		
-		
-
-
-		
-		
 		return view('home.orderdetail',['res'=>$res,'num'=>$num,'mid'=>$mid,'user'=>$user,'order'=>$order,'sum'=>$sum]);
 
 
@@ -59,17 +52,6 @@ class MyselfController extends Controller
 
 	    $res = AdminMember::where('uid',$id)->first();
 	    $order = AdminOrders::where('uid',$id)->get();
-
-	  
-		// dd(session::get('mid'));
-	    // dd($res);
-
-	     // dd($order);
-	     
-	    
-
-
-
 
 		return view('home.myself',['res'=>$res,'order'=>$order]); 
 	}
@@ -99,18 +81,6 @@ class MyselfController extends Controller
         	session::put('homeUser',$user);
         	// dd(session::get('homeUser'));
        		return back();
-      	
-      
-
-
-		 // dd($data);
-
-
-		
-		
-	    
-		// return view('home.myinfo');
-
 
 	}
 	//评价
@@ -172,8 +142,6 @@ class MyselfController extends Controller
 	}
 	public function myinfopic(Request $req)
 	 {	
-
-		// dd($req);
 	
 		$res = $req->except('_token');
 			if(!$req->upic){
@@ -182,17 +150,21 @@ class MyselfController extends Controller
 		$user = session::get('homeUser.uid');
 		$data = AdminMember::where('uid',$user)->first();
 		// dd($req->get('profile'));
+		
         if($req->upic){
             $name = time().'_'.rand(1111,9999);
             $suffix = $req->file('upic')->getClientOriginalExtension(); 
             $path = $req->file('upic')->move('./upload', $name.'.'.$suffix);
             $res['upic'] = '/upload/'.$name.'.'.$suffix;
-          	
-            if(file_exists('.'.$data->upic)){
-                unlink('.'.$data->upic);
-             }
+
+             if($data['upic']){
+
+                if(file_exists('.'.$data['upic'])){
+
+                    unlink('.'.$data->upic);
+               }
         }
-       
+     }  
 
        try{
            AdminMember::where('uid',$user)->update($res);

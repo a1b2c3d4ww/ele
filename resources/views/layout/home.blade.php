@@ -196,7 +196,7 @@
                                     <a class="icon-profile" href="/home/myself/">
                                         个人中心
                                     </a>
-                                    <a class="icon-star" href="/home/collect">
+                                    <a class="icon-star" href="/home/enshrine">
                                         我的收藏
                                     </a>
                                     <a class="icon-location" href="/home/myinfo">

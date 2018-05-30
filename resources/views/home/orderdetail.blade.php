@@ -51,12 +51,6 @@
                         </div>
                     </div>
                     <div class="orderprogress-rstoperate">
-                        <!-- ngIf: !favored -->
-                        <a href="javascript:" class="rstinfo-favor ng-scope">
-                            <i class="icon icon-order-favor">
-                            </i>
-                            收藏
-                        </a>
 
                         <a href="javascript:" class="ng-scope">
                             <i class="icon icon-order-complaint">

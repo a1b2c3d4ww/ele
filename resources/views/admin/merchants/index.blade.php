@@ -216,7 +216,9 @@
                 </style>
             <div class="dataTables_paginate paging_full_numbers " style="display: inline-block;" id="DataTables_Table_1_paginate">
 
+
                  {{$res->appends(['num'=>$num,'search'=>$search])->links()}}
+
 
             </div>
         </div>
