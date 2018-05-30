@@ -87,7 +87,7 @@ class MyselfController extends Controller
 	{
 		
 
-
+        
 		 $res = $req->input();
            try{
            AdminMember::where('uid',$id)->update($res);
