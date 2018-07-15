@@ -139,8 +139,6 @@ class OrdersController extends Controller
 
         $res = ReadOrders::where('oid',$id)->get();
 
-        // dd($res);    
-        // 
         return view('admin.orders.read',[
             'title'=>'订单详情',
             'res'=>$res

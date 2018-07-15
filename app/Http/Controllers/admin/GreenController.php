@@ -50,7 +50,7 @@ class GreenController extends Controller
         if(!(empty($req->input('gnamesearch')))){
            $condition[] = ['gname','like','%'.$req->input('gnamesearch').'%'];
         }   
-           $res = AdminGreen::orderBy('mid')
+           $res = AdminGreen::orderBy('mid','desc')
          ->where($condition)
          ->paginate($req->input('num',10));
          // dd($res);

@@ -114,7 +114,7 @@
                         <td align="center" class=" " style="width: 140px;">
                              @if($v->safe=='0')
                                 无
-                            @elseif($v->status=='1') 
+                            @elseif($v->safe=='1') 
                                 有
                             @endif
                           </td>

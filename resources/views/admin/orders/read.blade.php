@@ -79,7 +79,7 @@
                             </td>
 
                             <td class=" ">
-                              <img src="{{$v->gpic}}" alt="" width='100px'>
+                              <img src="{{getgPic($v->gid)}}" alt="" width='100px'>
                             </td>
                             <td class=" ">
                              {{$v->gname}}

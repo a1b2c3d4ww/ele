@@ -25,7 +25,7 @@ class GreencateController extends Controller
            $condition[] = ['mname','like','%'.$req->input('namesearch').'%'];
         }
         	
-           $res = AdminGreencate::orderBy('mid')
+           $res = AdminGreencate::orderBy('mid','desc')
          ->where($condition)
          ->paginate($req->input('num',10));
          // dd($res);

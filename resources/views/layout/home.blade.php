@@ -265,7 +265,7 @@
             <div class="footer-link" style="width:945px; ">
                <ul>
                     @foreach($links as $k=>$v)
-                   <li><a href="{{$v->ylinks}}"><img src="{{$v->ypic}}"></a></li>
+                   <li><a href="{{$v->ylinks}}"><img width="88" height="31" src="{{$v->ypic}}"></a></li>
                    @endforeach
                </ul> 
                 

@@ -32,7 +32,7 @@ class MerchantController extends Controller
         }
         $res = AdminMerchant::
         where($condition)->
-        orderBy('mid','asc')->
+        orderBy('mid','desc')->
         paginate($req->input('num',10));
         // dd($req->input('num',10));
         // $count()

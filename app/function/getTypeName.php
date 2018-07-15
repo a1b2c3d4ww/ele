@@ -92,6 +92,11 @@
 			$res = DB::table('take_users')->where('uid',$id)->first();
 			return $res->upic;	
 	}
+	function getgPic($id)
+	{
+			$res = DB::table('take_greens')->where('gid',$id)->first();
+			return $res->gpic;	
+	}
 	function  getdetails($id)
 	{	
 		

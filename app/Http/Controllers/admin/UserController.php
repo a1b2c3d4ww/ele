@@ -215,18 +215,16 @@ class UserController extends Controller
 }
     public function destroy($id)
     {
-
+        // dd($id);
 
         try{
-               AdminUser::where('uid',$id)->delete();
-      
+               AdminUser::where('aid',$id)->delete();
+                
 
         }catch(\Exception $e){
             return back()->with('warning','删除失败');
         }
-                 
-            
-           
+
               return redirect('/admin/user')->with('msg','删除成功');
        
     }

@@ -32,7 +32,7 @@ class AjaxController extends Controller
     {
     	$data  = AdminCate::get();
     	$data = getlevelcates($data);
-
+      // halt($data);
     	$data = $data[$id];
     	if($data){
     		return $data;

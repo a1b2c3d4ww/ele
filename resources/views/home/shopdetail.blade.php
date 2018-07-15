@@ -231,7 +231,7 @@
                         </span>
                     </h3>
                      @foreach(getGreens($v->fid) as $kk=>$vv)
-
+                      @if($vv->status=='1')
                     <div class="shopmenu-food ng-isolate-scope">
                         
                         <!-- ngIf: food.image_path -->
@@ -241,7 +241,9 @@
                             </a>
                         </span>
                         <!-- end ngIf: food.image_path -->
+
                         <div class="col-2 shopmenu-food-main">
+                           
                             <h3 class="shopmenu-food-name ui-ellipsis ng-binding">
                                 {{$vv->gname}}
                             </h3>
@@ -282,6 +284,7 @@
                             </div>
                         </span>
                     </div>
+                    @endif
                     @endforeach
                 </div>
                  @endforeach

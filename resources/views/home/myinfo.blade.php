@@ -45,13 +45,14 @@
         <div class="profileinfo ng-scope">
 
         
-            <div class="profile-avatarwrap" style="background:url('/home/images/toux.jpg');">
+            
                 {{csrf_field()}}
             
-               <a href="javascript:;" class="file" style="width:112px;height:112px;">
+                <a href="javascript:;" class="file" style="width:112px;height:112px;">
                 <img src="{{$res->upic}}" width="100%" style="border-radius:50%;"> 
-                <input type="file" name="upic" title="点击更改头像">
+                 <input type="file" name="upic" title="点击更改头像">
                </a>
+
                <script>
                     setInterval(function(){
                         var aa = $('input').eq(1).val();
@@ -60,7 +61,7 @@
                         }     
                     },100)
                </script>
-            </div>       
+            
          
         <br>
         

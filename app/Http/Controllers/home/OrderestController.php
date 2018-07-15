@@ -62,7 +62,7 @@ class OrderestController extends Controller
 		// $details->find($oid)->details()->createMany(session('carts'));
     	// dd($data);
     	$user = session::get('homeUser');
-      session::put('orders.oid',date('Ymd').rand(10,100));
+      session::put('orders.oid',date('Ym').rand(1,1000));
     	session::put('orders.uname',$user['uname']);
     	session::put('orders.addr',$user['addr']);
     	session::put('orders.uid',$user['uid']);

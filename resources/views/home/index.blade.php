@@ -202,7 +202,7 @@
             $(this).click(function(){
                     $('.liebiaos').hide();
                     k = $(this).val()
-                    // console.log(k);
+                    console.log(k);
                 $.ajax({
                 url:'/home/firstajax/'+k,
                 data:'',
@@ -213,11 +213,10 @@
                       $('#child').text('');
                 $('#child').removeClass('ng-hide');
                 var sub = g.sub;
-                // console.log(sub);
+                console.log(g);
                 for (var i in sub) {
                     // console.log(sub[i].cname);
-                    var lis = $('<li class="excavator-filter-item ng-binding ng-scope active childlist" value="" style="cursor:pointer;"></li>');
-                    
+                    var lis = $('<li class="excavator-filter-item ng-binding ng-scope active childlist" value="" style="cursor:pointer;"></li>');                    
                     $('#child').append(lis.text(sub[i].cname));
                     $('#child').append(lis.val(sub[i].cid));
 

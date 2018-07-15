@@ -290,9 +290,6 @@
                                     <!-- ngIf: comment.item_rating_list -->
                                     <div class="shoprate-itemrating shoprate-itemratinglist ng-isolate-scope"
                                     item-rating-list="" data="food" ng-if="comment.item_rating_list" ng-repeat="food in comment.item_rating_list">
-                                        <span class="shoprate-itemratinglist-name ng-binding">
-                                            干豆腐卷
-                                        </span>
                                         <div class="commentitem-stars rate ng-isolate-scope" config="rateConfig"
                                         value="ratingValue" isreadonly="true" rate="">
                                             <p class="rate-star readonly level4" ng-class="{readonly: isreadonly, star: starStyle}">
